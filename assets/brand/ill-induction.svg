@@ -1,0 +1,22 @@
+<svg width="240" height="180" viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Illustration / induction">
+<!-- the card being calibrated, with its ghost (the reading before calibration) -->
+<path d="M94 40H162L170 48V84H94V40Z" stroke-width="1.2" stroke="#26231F" stroke-opacity="0.18"/>
+<path d="M86 46H154L162 54V90H86V46Z" fill="#F1ECE1" stroke-width="1.2" stroke-linejoin="round" stroke="#26231F"/>
+<path d="M96 60H140M96 68H132M96 76H124" stroke-width="1.1" stroke="#26231F" stroke-opacity="0.35"/>
+<!-- the needle drops from the card onto the standard -->
+<path d="M120 90V113" stroke-width="1.1" stroke="#26231F" stroke-dasharray="2 3"/>
+<path d="M116.5 108.5L120 114L123.5 108.5" stroke-width="1.1" stroke="#2F37A8" stroke-linejoin="round"/>
+<!-- the standard: a graduated scale -->
+<path d="M46 116H194V132H46V116Z" fill="#F1ECE1" stroke-width="1.2" stroke-linejoin="round" stroke="#26231F"/>
+<path d="M50 116V120M57 116V120M64 116V120M71 116V120M78 116V124M85 116V120M92 116V120M99 116V120M106 116V120M113 116V124M127 116V120M134 116V120M141 116V120M148 116V124M155 116V120M162 116V120M169 116V120M176 116V120M183 116V124M190 116V120" stroke-width="1" stroke="#26231F"/>
+<path d="M120 116V128" stroke-width="1.2" stroke="#26231F"/>
+<circle cx="120" cy="116" r="3" fill="#2F37A8"/>
+<!-- open · on the record · recognised -->
+<circle cx="96" cy="152" r="3.2" fill="#F1ECE1" stroke-width="1.1" stroke="#26231F"/>
+<circle cx="108" cy="152" r="3.2" fill="#26231F"/>
+<circle cx="120" cy="152" r="3.2" fill="#26231F"/>
+<circle cx="132" cy="152" r="3.2" fill="#26231F"/>
+<circle cx="144" cy="152" r="3.2" fill="#2F37A8"/>
+</g>
+</svg>
