@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Careers — Deccan AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400&family=Instrument+Serif:ital@1&family=Inter+Tight:wght@400&family=Inter:opsz,wght@14..32,400;14..32,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111113;
+  --bg-2:#121314;
+  --paper:#f6f3f0;
+  --btn-ink:#181818;
+  --sub:#5c5c5c;
+  --muted:rgba(255,255,255,.6);
+  --line:rgba(255,255,255,.12);
+  --chip:rgba(255,255,255,.04);
+  --accent:#335cff;
+  /* Season Mix / Season Sans are trial fonts — loaded if installed, otherwise the fallbacks apply */
+  --display:"Season Mix TRIAL","Season Mix","Inter Tight",system-ui,sans-serif;
+  --display-italic:"Season Mix TRIAL","Season Mix","Instrument Serif",Georgia,serif;
+  --label:"Season Sans TRIAL","Season Sans","Inter",system-ui,sans-serif;
+  --sans:"Inter",system-ui,sans-serif;
+  --gutter:112px;
+  --shell:1216px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--paper);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* Inter Display = Inter at its large optical size */
+.disp{font-variation-settings:"opsz" 32;font-feature-settings:"ss11" 1,"calt" 0,"liga" 0}
+
+.shell{width:min(var(--shell),100% - 2*var(--gutter));margin-inline:auto;position:relative}
+/* Figma trims the heading line box to cap height (~26px at 36px) */
+.h2{font-family:var(--display);font-weight:400;font-size:36px;line-height:1.36;letter-spacing:-2px;color:var(--paper);font-feature-settings:"calt" 0,"liga" 0;margin-block:-12px -11px}
+.lede{font-size:16px;line-height:24px;letter-spacing:-.176px;color:var(--sub);font-feature-settings:"ss11" 1,"calt" 0,"liga" 0}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:8px 13px 8px 16px;border-radius:2px;background:var(--paper);color:var(--btn-ink);font-size:14px;font-weight:500;line-height:28px;white-space:nowrap;transition:background .2s,transform .2s}
+.btn:hover{background:#fff;transform:translateY(-1px)}
+.btn img{width:14px;height:14px;flex:none}
+.btn .bend-up{transform:scaleY(-1) rotate(90deg)}
+.btn .bend{transform:scaleY(-1)}
+
+/* ---------- header ---------- */
+.site-header{position:sticky;top:0;z-index:50;padding:2px 120px;background:url(img/header.png) center/cover}
+.nav{max-width:1280px;height:84px;margin:0 auto;padding:0 40px;display:flex;align-items:center;gap:16px}
+.nav__logo{width:119.048px;height:41.16px;flex:none}
+.nav__links{flex:1;display:flex;justify-content:center;gap:32px}
+.nav__links a{font-size:14px;font-weight:500;line-height:28px;color:var(--paper);opacity:.92;transition:opacity .2s}
+.nav__links a:hover{opacity:1}
+.nav .btn{padding:8px 16px;color:#121212}
+
+/* ---------- hero ---------- */
+.hero{position:relative;z-index:10;height:583px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px var(--gutter) 80px;text-align:center}
+.hero__bg{position:absolute;left:calc(50% - .5px);top:calc(50% + 246.5px);width:1451px;height:632px;transform:translate(-50%,-50%);opacity:.12;pointer-events:none}
+.hero__bg img{width:100%;height:100%;object-position:bottom}
+.hero__pattern{position:absolute;left:calc(50% - 34.5px);top:calc(50% + 244.5px);width:1689px;height:794px;transform:translate(-50%,-50%);pointer-events:none}
+.hero__content{position:relative;max-width:100%;display:flex;flex-direction:column;align-items:center;gap:32px;padding-bottom:112px}
+.hero__text{max-width:100%;display:flex;flex-direction:column;align-items:center;gap:24px}
+.hero h1{width:558px;max-width:100%;font-family:var(--display);font-weight:400;font-size:36px;line-height:1.36;letter-spacing:-2px;font-feature-settings:"calt" 0,"liga" 0}
+.hero p{width:494.784px;max-width:100%;font-size:16px;line-height:24px;letter-spacing:-.176px;opacity:.8}
+
+/* ---------- team photo ---------- */
+.photo{position:relative;z-index:9;height:613px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--gutter)}
+.photo__frame{position:relative;overflow:hidden;padding:12px;border-radius:4.267px;background:rgba(255,255,255,.01);-webkit-backdrop-filter:blur(23.573px);backdrop-filter:blur(23.573px);width:min(var(--shell),100%);margin:0 auto}
+.photo__glow{position:absolute;left:0;top:19px;width:1303.467px;height:1442.133px;pointer-events:none}
+.photo__glow img{width:100%;height:100%;object-position:bottom}
+.photo__img{position:relative;aspect-ratio:1192/664.711;overflow:hidden}
+.photo__img img{position:absolute;top:0;left:-9.21%;width:118.42%;height:100.13%;max-width:none}
+
+/* ---------- card grids (culture + values) ---------- */
+.cards-sec{position:relative;padding:112px 0;display:flex;flex-direction:column;gap:44px}
+.cards-sec__glow{position:absolute;left:calc(50% + 1.21px);top:calc(50% + 97.92px);transform:translate(-50%,-50%) rotate(5.71deg);width:1359.824px;height:430.773px;opacity:.8;pointer-events:none;-webkit-mask-image:radial-gradient(closest-side,#000 0%,rgba(0,0,0,.34) 69%,transparent 100%);mask-image:radial-gradient(closest-side,#000 0%,rgba(0,0,0,.34) 69%,transparent 100%)}
+.cards-sec__glow img{width:100%;height:100%;object-position:bottom}
+.sec-title{display:flex;align-items:center;gap:12px}
+.sec-title .h2{flex:1}
+.sec-title .btn{padding:8px 12px 8px 15px}
+
+.grid{display:grid;gap:12px}
+.grid--culture{grid-template-columns:repeat(3,1fr)}
+.grid--values{grid-template-columns:repeat(2,1fr)}
+.stack{display:flex;flex-direction:column;gap:8px}
+.card{flex:1;display:flex;flex-direction:column;gap:32px;padding:22px;min-height:196px;border:1px solid var(--line);background:rgba(18,18,18,.16);-webkit-backdrop-filter:blur(17px);backdrop-filter:blur(17px);transition:border-color .25s,background .25s}
+.card:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.03)}
+.card--tall{justify-content:space-between;height:100%}
+.card__icon{align-self:flex-start;padding:10px;border-radius:1px;background:rgba(255,255,255,.02);box-shadow:0 3px 3px -1.5px rgba(23,23,23,.06),0 1px 1px -.5px rgba(23,23,23,.06),0 0 0 1px rgba(23,23,23,.02)}
+.card__icon img{width:28px;height:28px}
+.card__text{display:flex;flex-direction:column;gap:8px}
+.card h3{font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.176px;color:#fff}
+.card p{font-size:13px;line-height:20px;letter-spacing:-.078px;color:var(--muted)}
+
+/* ---------- meet the team ---------- */
+.team{position:relative;z-index:7;padding:112px 0;display:flex;flex-direction:column;gap:44px;overflow:hidden}
+.team__ctrls{display:flex;gap:14px}
+.pill{display:flex;align-items:center;height:36px;border-radius:42px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.04)}
+.dots{gap:8px;width:116px;padding:8px 12px}
+.dot{height:36px;display:flex;align-items:center}
+.dot span{position:relative;display:block;width:6px;height:6px;border-radius:999px;background:rgba(246,243,240,.2);overflow:hidden;transition:width .35s}
+.dot span i{position:absolute;inset:0 auto 0 0;width:0;background:var(--paper)}
+.dot.is-active span{width:50px}
+.dot.is-active span i{animation:fill var(--dur,6s) linear forwards}
+.team.is-paused .dot.is-active span i{animation-play-state:paused}
+@keyframes fill{from{width:0}to{width:100%}}
+.play-toggle{width:36px;justify-content:center}
+.play-toggle img{width:12px;height:12px}
+.team__track{display:flex;gap:44px;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.slide{position:relative;flex:none;width:1204px;max-width:calc(100vw - 2*var(--gutter));aspect-ratio:1204/618;border-radius:4px;overflow:hidden}
+.slide img{position:absolute;left:0;top:-.67%;width:100%;height:109.59%;max-width:none;object-fit:cover}
+.slide::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.3)}
+.slide__play{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);width:66px;height:66px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1.833px solid rgba(255,255,255,.04);background:linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.5)),rgba(255,255,255,.02);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:transform .2s}
+.slide__play:hover{transform:translate(-50%,-50%) scale(1.06)}
+.slide__play img{width:29px;height:32px}
+
+/* ---------- open roles ---------- */
+.roles{position:relative;z-index:5;padding:106px 0;display:flex;flex-direction:column;gap:44px}
+.roles__head{display:flex;flex-direction:column;gap:16px}
+.rule{height:0;border-top:1px solid var(--line);margin-top:-1px;width:100%}
+.dept{display:flex;gap:32px;align-items:flex-start}
+.dept__meta{width:288px;flex:none;display:flex;flex-direction:column;gap:7px}
+.dept__name{display:flex;align-items:center;gap:7px;font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.176px;color:#fff}
+.chip{padding:4px 10px;border-radius:42px;background:var(--chip);border:1px solid rgba(255,255,255,.04);font-weight:400;font-size:12px;line-height:1.25;letter-spacing:-.132px}
+.dept__meta p{width:242px;font-size:14px;line-height:20px;letter-spacing:-.084px;color:var(--muted)}
+.dept__list{flex:1;min-width:0;display:flex;flex-direction:column;gap:32px}
+.dept__list .rule{border-color:rgba(255,255,255,.08)}
+.job{display:flex;gap:20px;align-items:flex-start}
+.job__text{flex:1;display:flex;flex-direction:column;gap:8px}
+.job h4{font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.176px;color:rgba(255,255,255,.88);transition:color .2s}
+.job p{font-size:13px;line-height:20px;letter-spacing:-.078px;color:var(--muted)}
+.job img{width:12px;height:12px;flex:none;transition:transform .25s}
+.job:hover h4{color:#fff}
+.job:hover img{transform:translate(2px,-2px)}
+.more{display:flex;align-items:center;justify-content:space-between;padding:5px 0;font-size:14px;letter-spacing:-.084px}
+.more a{display:flex;align-items:center;gap:8px;font-weight:500;line-height:28px;color:var(--paper)}
+.more a img{width:24px;height:24px;transform:scaleY(-1);transition:transform .25s}
+.more a:hover img{transform:scaleY(-1) translate(2px,2px)}
+
+/* ---------- hiring process ---------- */
+.process{position:relative;z-index:4;padding:106px 0;display:flex;flex-direction:column;gap:44px}
+.process__head{display:flex;flex-direction:column;gap:16px}
+.process__head .lede{width:549px;max-width:100%}
+.process__body{display:flex;flex-direction:column;gap:40px}
+.stepper{position:relative;display:flex;align-items:center;gap:16px}
+.stepper__line{position:relative;flex:1;height:14px;display:flex;align-items:center;cursor:pointer}
+.stepper__line::before{content:"";position:absolute;left:0;right:0;top:6px;height:2px;background:rgba(255,255,255,.06);transition:background .2s}
+.stepper__line:hover::before{background:rgba(255,255,255,.14)}
+.stepper__line i{position:absolute;left:0;right:0;top:6px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left center;box-shadow:0 0 10px rgba(51,92,255,.55)}
+.stepper__tick{width:2px;height:12px;background:rgba(255,255,255,.06);flex:none}
+.step{display:flex;align-items:center;gap:20px}
+.step__num{position:relative;width:44px;height:44px;flex:none;overflow:hidden;border-radius:96px;background:rgba(247,247,247,.06);border:1px solid rgba(255,255,255,.02);font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.176px;color:#fff}
+.step__num b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:500}
+.step__text{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}
+.step__text h4{font-weight:500;font-size:16px;line-height:24px;letter-spacing:-.176px;color:rgba(255,255,255,.88);white-space:nowrap}
+.step__text p{font-size:13px;line-height:20px;letter-spacing:-.078px;color:var(--muted)}
+.step__text span{display:inline-block;white-space:pre;will-change:transform,filter}
+.step__text .w{white-space:nowrap;will-change:auto}
+.arrows{display:flex;border-radius:2px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04)}
+.arrows button{padding:8px 12px;border:1px solid rgba(255,255,255,.04);transition:background .2s}
+.arrows button:hover{background:rgba(255,255,255,.06)}
+.arrows button:active img{transform:scale(.86)}
+.arrows img{width:20px;height:20px;transition:transform .15s}
+
+/* hiring process stage — Figma coordinates (1216×480 border box), scaled to fit */
+.mosaic{position:relative;height:480px;overflow:hidden;border:1px solid var(--line);background:rgba(255,255,255,.01)}
+.hp-stage{position:absolute;left:-1px;top:-1px;width:1216px;height:480px;transform-origin:0 0;font-family:var(--sans)}
+.hp-bgwrap,.hp-world,.hp-drift,.hp-layer{position:absolute;inset:0}
+.hp-bg{position:absolute;left:0;top:0;width:2184.744px;height:951.591px;max-width:none;pointer-events:none;opacity:0;filter:blur(48px)}
+.hp-t{position:absolute;left:0;top:0;width:108.41px;height:108.41px;opacity:0}
+.hp-t__in{position:absolute;inset:0;border-radius:3px;border:1.5px solid rgba(255,255,255,.05);background:rgba(255,255,255,.01);overflow:hidden}
+.hp-t--face .hp-t__in{border-color:rgba(255,255,255,var(--b,.14));background:#141416}
+.hp-t--face .hp-t__in::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,19,0) 30%,rgba(17,17,19,.6));pointer-events:none}
+.hp-t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6;pointer-events:none}
+.hp-you .hp-t__in::after{background:linear-gradient(180deg,rgba(17,17,19,0) 60%,rgba(17,17,19,.3))}
+.hp-you img{opacity:.8}
+/* faces are only fully lit inside a soft spotlight (cursor, or the candidate when idle) */
+.hp-faces{-webkit-mask-image:radial-gradient(circle 360px at var(--sx,608px) var(--sy,240px),#000 0%,rgba(0,0,0,.62) 42%,rgba(0,0,0,.2) 100%);mask-image:radial-gradient(circle 360px at var(--sx,608px) var(--sy,240px),#000 0%,rgba(0,0,0,.62) 42%,rgba(0,0,0,.2) 100%)}
+.hp-a{position:absolute;left:0;top:0;opacity:0;visibility:hidden}
+.hp-wires{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.hp-wires path{fill:none}
+.hp-wires circle{fill:#fff;filter:drop-shadow(0 0 4px rgba(255,255,255,.9))}
+.hp-glow{width:324px;height:324px;pointer-events:none}
+.hp-glow img{width:100%;height:100%;max-width:none}
+.hp-ring{width:108.41px;height:108.41px;border-radius:4px;border:1px solid rgba(255,255,255,.4);pointer-events:none;z-index:2}
+.hp-bracket{width:124.41px;height:124.41px;pointer-events:none;z-index:6}
+.hp-bracket i{position:absolute;width:16px;height:16px;border:1.5px solid rgba(255,255,255,.92)}
+.hp-bracket i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0}
+.hp-bracket i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0}
+.hp-bracket i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0}
+.hp-bracket i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0}
+.hp-label{font-size:10px;font-weight:500;line-height:12px;letter-spacing:.6px;color:rgba(255,255,255,.5);white-space:nowrap;z-index:4}
+.hp-label--hi{color:rgba(255,255,255,.75)}
+.hp-label span{display:inline-block;white-space:pre}
+.hp-pill{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:99px;background:#17171a;border:1px solid rgba(255,255,255,.14);font-size:12px;font-weight:500;line-height:normal;color:rgba(255,255,255,.85);white-space:pre;z-index:7;font-variant-numeric:tabular-nums}
+.hp-pill--sm{gap:7px;padding:6px 11px}
+.hp-pill b{font-weight:500}
+.hp-count{position:relative;display:inline-block;overflow:hidden;vertical-align:bottom;height:15px}
+.hp-count b{display:block}
+.hp-dot{position:relative;width:7px;height:7px;flex:none}
+.hp-dot img{display:block;width:100%;height:100%}
+.hp-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#61d159;animation:hp-ping 1.6s cubic-bezier(.16,1,.3,1) infinite}
+@keyframes hp-ping{0%{transform:scale(1);opacity:.65}100%{transform:scale(3.2);opacity:0}}
+.hp-deccan{width:108.41px;height:108.41px;border-radius:3px;border:1.5px solid rgba(255,255,255,.2);background:rgba(0,0,0,.18);overflow:hidden;z-index:3}
+.hp-deccan img{position:absolute;left:10.71px;top:38.27px;width:83.475px;height:28.861px}
+.hp-pulse{width:29px;height:29px;z-index:5}
+.hp-pulse img{width:100%;height:100%;max-width:none}
+.hp-card{display:flex;flex-direction:column;border-radius:4.724px;border:1.181px solid rgba(255,255,255,.12);background:rgba(19,20,23,.96);box-shadow:0 23.621px 47.242px rgba(0,0,0,.5);overflow:hidden;transform-origin:0 0;z-index:5}
+.hp-card__head{width:444.077px;display:flex;align-items:center;justify-content:space-between;padding:18.897px 21.259px}
+.hp-card__title{font-size:16.535px;font-weight:500;color:rgba(255,255,255,.9);font-variation-settings:"opsz" 32}
+.hp-badge{display:flex;align-items:center;gap:7.086px;padding:4.724px 10.63px;border-radius:117px;background:rgba(255,255,255,.06);border:1.181px solid rgba(255,255,255,.1);font-size:12.992px;font-weight:500;color:rgba(255,255,255,.8)}
+.hp-badge .hp-dot{width:7.086px;height:7.086px}
+.hp-card__rule{width:445.258px;height:1.181px;background:rgba(255,255,255,.08)}
+.hp-card__prog{padding:20px 22px}
+.hp-card__bar{position:relative;width:392px;height:2px;background:rgba(255,255,255,.08);overflow:hidden}
+.hp-card__bar i{position:absolute;left:0;top:0;width:250.384px;height:2.362px;background:#fff;transform-origin:left center;transform:scaleX(0)}
+.hp-card__rows{display:flex;flex-direction:column;gap:14.173px;padding:16.535px 21.259px 9.448px}
+.hp-row{display:flex;align-items:center;gap:11.811px}
+.hp-row__dot{position:relative;width:9.448px;height:9.448px;flex:none}
+.hp-row__dot img{position:absolute;inset:0;width:100%;height:100%;max-width:none}
+.hp-row.is-run .hp-row__dot img{left:-100%;top:-100%;width:300%;height:300%}
+.hp-row__t{flex:1;font-size:15.354px;color:rgba(255,255,255,.35);transition:color .35s}
+.hp-row__m{font-size:12.992px;font-weight:500;color:rgba(255,255,255,.35)}
+.hp-row.is-done .hp-row__t,.hp-row.is-run .hp-row__t{color:rgba(255,255,255,.82)}
+.hp-row.is-run .hp-row__m{color:rgba(255,255,255,.7)}
+.hp-card__foot{height:21.259px}
+.hp-scan{width:108.41px;height:108.41px;z-index:4;pointer-events:none}
+.hp-scan__clip{position:absolute;inset:0;overflow:hidden;border-radius:3px}
+.hp-scan__trail{position:absolute;left:0;top:-40px;width:100%;height:40px;background:linear-gradient(rgba(4,45,225,0),rgba(4,45,225,.35))}
+.hp-scan__beam{position:absolute;left:-8px;top:0;width:124.41px;height:1.5px;background:rgba(51,153,255,.9);box-shadow:0 0 12px rgba(255,255,255,.35)}
+.hp-side{display:flex;align-items:center;gap:0;z-index:4}
+.hp-line{height:1px}
+.hp-line img{display:block;width:100%;height:100%;max-width:none}
+.hp-side .hp-line{width:28px;transform-origin:left center}
+
+/* ---------- office collage ---------- */
+.office{position:relative;z-index:3;height:1138px;background:var(--bg);overflow:hidden}
+.office__glow{position:absolute;left:calc(50% - 3.5px);top:calc(50% + 73px);width:1186.93px;height:985.584px;transform:translate(-50%,-50%) rotate(60deg);opacity:.8;pointer-events:none;-webkit-mask-image:radial-gradient(closest-side,#000 0%,rgba(0,0,0,.34) 69%,transparent 100%);mask-image:radial-gradient(closest-side,#000 0%,rgba(0,0,0,.34) 69%,transparent 100%)}
+.office__glow img{filter:blur(36px);width:100%;height:100%;object-position:bottom}
+.office__stage{position:absolute;left:50%;top:0;width:1347px;height:1138px;transform:translateX(-50%)}
+.shot{position:absolute;border-radius:2px;overflow:hidden;box-shadow:0 68px 19px 0 rgba(0,0,0,0),0 44px 17px 0 rgba(0,0,0,.01),0 25px 15px 0 rgba(0,0,0,.03),0 11px 11px 0 rgba(0,0,0,.05),0 3px 6px 0 rgba(0,0,0,.06);will-change:transform}
+.shot img{width:100%;height:100%;object-fit:cover}
+.office__cta{position:absolute;left:calc(50% + 16.5px);top:482.03px;transform:translateX(-50%);width:477px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center}
+.office__cta h2{font-family:var(--display);font-weight:400;font-size:42px;line-height:1.35;letter-spacing:-.8px;color:var(--paper)}
+.office__cta .btn{gap:12px;padding:8px 12px}
+
+/* ---------- FAQ ---------- */
+.faq{position:relative;z-index:2;padding:106px 0;display:flex;flex-direction:column;align-items:flex-end;gap:44px}
+.faq__title{align-self:stretch;font-family:var(--display);font-weight:400;font-size:58px;line-height:63px;letter-spacing:-2px}
+.faq__title span{display:block;color:rgba(246,243,240,.82)}
+.faq__title em{display:block;font-family:var(--display-italic);font-style:italic;color:var(--paper)}
+.faq__list{width:753px;max-width:100%;display:flex;flex-direction:column}
+.qa{position:relative}
+.qa+.qa::before{content:"";position:absolute;left:0;right:0;top:-.5px;border-top:1px solid rgba(255,255,255,.12)}
+.qa__q{width:100%;display:flex;align-items:center;gap:54px;padding:34px 0;text-align:left}
+.qa:first-child .qa__q{padding-top:0}
+.qa:last-child .qa__q{padding-bottom:0}
+.qa__n{font-family:var(--label);font-size:18px;line-height:22px;letter-spacing:.2px;text-transform:uppercase;color:rgba(246,243,240,.76);opacity:.7;flex:none}
+.qa__t{flex:1;font-family:var(--label);font-weight:500;font-size:26px;line-height:36px;letter-spacing:-1.6px;color:var(--paper)}
+.qa__q img{width:24px;height:24px;flex:none;transition:transform .3s}
+.qa.is-open .qa__q img{transform:rotate(45deg)}
+.qa__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.qa.is-open .qa__a{grid-template-rows:1fr}
+.qa__a>div{overflow:hidden}
+.qa__a p{padding:0 48px 34px 79px;font-size:15px;line-height:24px;color:var(--muted)}
+
+/* ---------- closing + footer ---------- */
+.closing{position:relative;z-index:1;background:var(--bg-2);isolation:isolate}
+.cta{position:relative;z-index:2;height:680px;display:flex;flex-direction:column;align-items:center;gap:44px;padding:182px var(--gutter) 106px}
+.cta__bg{position:absolute;left:calc(50% + 5.5px);top:calc(50% - 19.36px);width:1451px;height:774px;transform:translate(-50%,-50%);border-radius:5px;overflow:hidden;pointer-events:none}
+.cta__bg img{width:100%;height:100%;object-fit:cover}
+.cta__bg::after{content:"";position:absolute;inset:0;background:url("data:image/svg+xml;utf8,<svg viewBox='0 0 1451 774' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect width='100%' height='100%' fill='url(%23g)'/><defs><radialGradient id='g' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-7.5113e-7 -61.176 260.17 1.4686 725.5 755.37)'><stop stop-color='rgba(19,20,23,0.3)' offset='0.023173'/><stop stop-color='rgba(17,17,19,1)' offset='1'/></radialGradient></defs></svg>") 0 0/100% 100%}
+.cta h2{position:relative;font-family:var(--display);font-weight:400;font-size:48px;line-height:63px;letter-spacing:-1.6px;color:#fff;text-align:center}
+.cta .btn{position:relative;padding:8px 12px 8px 15px}
+
+.footer{position:relative;z-index:1;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:300px var(--gutter) 80px}
+.footer__mark{position:absolute;left:-1.5px;top:-137.36px;width:1443px;height:352px;pointer-events:none}
+.footer__inner{position:relative;width:min(1201px,100%);display:flex;flex-direction:column;gap:64px}
+.footer__cta{display:flex;align-items:flex-end;gap:32px}
+.footer__addr{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:32px}
+.footer__addr address{font-style:normal;font-family:"DM Sans",var(--sans);font-size:15px;letter-spacing:-.2045px;color:#fff;font-variation-settings:"opsz" 14}
+.footer__addr .btn{padding:8px 16px}
+.footer__addr .btn img{width:13px;height:7px}
+.to-top{flex:1;display:flex;justify-content:flex-end;padding-right:44px}
+.to-top a{display:flex;align-items:center;gap:6px;height:44px;padding:0 16px 0 37px;font-size:14px;font-weight:500;line-height:28px;color:#fff;border-radius:999px;transition:background .2s}
+.to-top a:hover{background:rgba(255,255,255,.06)}
+.to-top img{width:9.682px;height:11px;transform:translateY(-1px)}
+.footer__cols{display:flex;justify-content:space-between}
+.fcol{width:169px;display:flex;flex-direction:column;gap:20px}
+.fcol h5,.legal small{font-family:var(--label);font-weight:400;font-size:12px;line-height:22px;letter-spacing:.2px;text-transform:uppercase;color:rgba(246,243,240,.82);opacity:.7}
+.fcol a{font-family:var(--label);font-size:15px;letter-spacing:-.2045px;color:#fff;opacity:.92;transition:opacity .2s}
+.fcol a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+.policies{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.policies a{font-family:"DM Sans",var(--sans);font-size:15px;letter-spacing:-.2045px;color:#fff;font-variation-settings:"opsz" 14}
+.policies a:hover{text-decoration:underline;text-underline-offset:3px}
+.policies img{width:1px;height:14px}
+.legal{display:flex;justify-content:space-between}
+
+/* ---------- responsive ---------- */
+@media (max-width:1200px){
+  :root{--gutter:48px}
+  .site-header{padding:2px 24px}
+  .grid--culture{grid-template-columns:1fr 1fr}
+  .grid--culture>.card--tall{grid-row:span 2}
+  .office{height:auto;padding:120px var(--gutter)}
+  .office__stage{position:static;transform:none;width:auto;height:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .shot{position:relative;inset:auto!important;width:auto!important;height:240px!important}
+  .office__cta{position:relative;left:auto;top:auto;transform:none;width:auto;grid-column:1/-1;grid-row:2;padding:48px 0}
+}
+@media (max-width:820px){
+  :root{--gutter:16px}
+  .nav{padding:0 4px}
+  .nav__links{display:none}
+  .nav>a:first-child{margin-right:auto}
+  .hero{height:auto;padding:96px var(--gutter) 64px}
+  .hero__content{padding-bottom:0}
+  .photo{height:auto;padding-top:24px}
+  .h2{font-size:30px;letter-spacing:-1.4px}
+  .sec-title{flex-wrap:wrap}
+  .grid--culture,.grid--values{grid-template-columns:1fr}
+  .grid--culture>.card--tall{grid-row:auto;min-height:196px}
+  .cards-sec,.team{padding:72px 0}
+  .roles,.process,.faq{padding:72px 0}
+  .dept{flex-direction:column;gap:20px}
+  .dept__meta{width:auto}
+  .more{flex-direction:column;align-items:flex-start;gap:8px}
+  .step{flex-wrap:wrap}
+  .step .arrows{margin-left:auto}
+  .step__text h4{white-space:normal}
+  .office__stage{grid-template-columns:1fr 1fr}
+  .shot{height:180px!important}
+  .office__cta h2{font-size:32px}
+  .faq__title{font-size:40px;line-height:46px}
+  .qa__q{gap:20px;padding:24px 0}
+  .qa__t{font-size:20px;line-height:28px;letter-spacing:-.8px}
+  .qa__a p{padding:0 0 24px 0}
+  .cta{height:auto;padding:120px var(--gutter) 96px}
+  .cta h2{font-size:34px;line-height:44px}
+  .footer{padding-top:180px}
+  .footer__cta{flex-direction:column;align-items:flex-start}
+  .to-top{padding-right:0;justify-content:flex-start}
+  .to-top a{padding-left:0}
+  .footer__cols{display:grid;grid-template-columns:1fr 1fr;gap:40px 16px}
+  .fcol{width:auto}
+  .legal{flex-direction:column;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <nav class="nav" aria-label="Primary">
+    <a href="#top" aria-label="Deccan AI home"><img class="nav__logo" src="img/logo.svg" alt="Deccan AI"></a>
+    <div class="nav__links">
+      <a href="#">Products</a>
+      <a href="#">Research</a>
+      <a href="#">Resources</a>
+      <a href="#">Company</a>
+    </div>
+    <a class="btn" href="#">Book a Demo</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true"><img src="img/hero-team-bg.png" alt=""></div>
+    <img class="hero__pattern" src="img/pattern.svg" width="1689" height="794" alt="" aria-hidden="true">
+    <div class="hero__content">
+      <div class="hero__text">
+        <h1>Join the team obsessed with<br>making AI more&nbsp; human</h1>
+        <p class="disp">At Deccan AI, obsession fuels innovation. We don’t settle and neither should you. Here, your pursuit of excellence will shape real-world impact.</p>
+      </div>
+      <a class="btn" href="#roles">View Open Roles <img class="bend-up" src="img/arrow-bend.svg" alt=""></a>
+    </div>
+  </section>
+
+  <section class="photo" aria-label="The Deccan AI team">
+    <div class="photo__frame">
+      <div class="photo__glow" aria-hidden="true"><img src="img/hero-team-bg.png" alt=""></div>
+      <div class="photo__img"><img src="img/hero-team.png" alt="The Deccan AI team together on a mountain retreat"></div>
+    </div>
+  </section>
+
+  <section class="cards-sec" style="z-index:8">
+    <div class="cards-sec__glow" aria-hidden="true"><img src="img/glow-bg.png" alt=""></div>
+    <div class="shell sec-title">
+      <h2 class="h2">Our Culture Code</h2>
+      <a class="btn" href="#roles">View Open Roles <img class="bend-up" src="img/arrow-bend.svg" alt=""></a>
+    </div>
+    <div class="shell grid grid--culture">
+      <div class="stack">
+        <article class="card">
+          <div class="card__icon"><img src="img/ic-sparkles.svg" alt=""></div>
+          <div class="card__text disp"><h3>Commitment to Excellence</h3><p>We uphold the highest standards and relentlessly pursue quality through continuous improvement.</p></div>
+        </article>
+        <article class="card">
+          <div class="card__icon"><img src="img/ic-activity.svg" alt=""></div>
+          <div class="card__text disp"><h3>Flat, Collaborative Structure</h3><p>We foster a transparent, merit-based culture where collaboration and great ideas thrive.</p></div>
+        </article>
+      </div>
+      <article class="card card--tall">
+        <div class="card__icon"><img src="img/ic-chart-scatter.svg" alt=""></div>
+        <div class="card__text disp"><h3>Exceptional Talent</h3><p>We intentionally hire capable, growth-minded individuals who elevate those around them.</p></div>
+      </article>
+      <div class="stack">
+        <article class="card">
+          <div class="card__icon"><img src="img/ic-group.svg" alt=""></div>
+          <div class="card__text disp"><h3>Decisive Action</h3><p>We act with urgency and clarity to drive impactful, measurable outcomes.</p></div>
+        </article>
+        <article class="card">
+          <div class="card__icon"><img src="img/ic-zap.svg" alt=""></div>
+          <div class="card__text disp"><h3>Speed with Reliability</h3><p>We deliver fast, scalable results without compromising on quality or trust.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="team" id="team">
+    <div class="shell sec-title">
+      <h2 class="h2">Meet the team</h2>
+      <div class="team__ctrls">
+        <div class="pill dots" role="tablist" aria-label="Team videos">
+          <button class="dot is-active" role="tab" aria-label="Go to card 1"><span><i></i></span></button>
+          <button class="dot" role="tab" aria-label="Go to card 2"><span><i></i></span></button>
+          <button class="dot" role="tab" aria-label="Go to card 3"><span><i></i></span></button>
+          <button class="dot" role="tab" aria-label="Go to card 4"><span><i></i></span></button>
+        </div>
+        <button class="pill play-toggle" aria-label="Pause card rotation" aria-pressed="false"><img src="img/icon-a.svg" alt=""></button>
+      </div>
+    </div>
+    <div class="shell">
+      <div class="team__track">
+        <div class="slide"><img src="img/team-video.png" alt="Team member talking about working at Deccan AI"><button class="slide__play" aria-label="Play video"><img src="img/icon-b.svg" alt=""></button></div>
+        <div class="slide"><img src="img/team-video.png" alt="Team member talking about working at Deccan AI"><button class="slide__play" aria-label="Play video"><img src="img/icon-b.svg" alt=""></button></div>
+        <div class="slide"><img src="img/team-video.png" alt="Team member talking about working at Deccan AI"><button class="slide__play" aria-label="Play video"><img src="img/icon-b.svg" alt=""></button></div>
+        <div class="slide"><img src="img/team-video.png" alt="Team member talking about working at Deccan AI"><button class="slide__play" aria-label="Play video"><img src="img/icon-b.svg" alt=""></button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cards-sec" style="z-index:6">
+    <div class="cards-sec__glow" aria-hidden="true"><img src="img/glow-bg.png" alt=""></div>
+    <div class="shell sec-title">
+      <h2 class="h2">Values that shape us</h2>
+      <a class="btn" href="#roles">View Open Roles <img class="bend-up" src="img/arrow-bend.svg" alt=""></a>
+    </div>
+    <div class="shell grid grid--values">
+      <div class="stack">
+        <article class="card">
+          <div class="card__icon"><img src="img/ic-sparkles.svg" alt=""></div>
+          <div class="card__text disp"><h3>Culture of learning</h3><p>We see mistakes as stepping stones, every experiment and every setback makes us stronger and smarter.</p></div>
+        </article>
+        <article class="card">
+          <div class="card__icon"><img src="img/ic-activity.svg" alt=""></div>
+          <div class="card__text disp"><h3>Bring your whole self</h3><p>We celebrate individuality, knowing that diverse perspectives and authentic voices drive the best ideas.</p></div>
+        </article>
+      </div>
+      <div class="stack">
+        <article class="card">
+          <div class="card__icon"><img src="img/ic-group.svg" alt=""></div>
+          <div class="card__text disp"><h3>Empathy</h3><p>We act with respect and understanding, supporting one another to build a truly supportive workplace.</p></div>
+        </article>
+        <article class="card">
+          <div class="card__icon"><img src="img/ic-zap.svg" alt=""></div>
+          <div class="card__text disp"><h3>Bias for Impact</h3><p>We focus our energy on work that matters, delivering meaningful outcomes for our teams, our customers, and the world.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="roles" id="roles">
+    <div class="shell roles__head">
+      <h2 class="h2">Join us in shaping tomorrow’s growth</h2>
+      <p class="lede">Help brands scale, connect with audiences, and create measurable impact.</p>
+    </div>
+    <div class="shell rule"></div>
+    <div class="shell dept">
+      <div class="dept__meta disp">
+        <div class="dept__name">Marketing <span class="chip">2 roles</span></div>
+        <p>Creative campaigns that engage.</p>
+      </div>
+      <div class="dept__list disp">
+        <a class="job" href="#"><div class="job__text"><h4>Growth Manager</h4><p>Develop innovative strategies to expand market reach and boost conversions.</p></div><img src="img/arrow-ne.svg" alt=""></a>
+        <div class="rule"></div>
+        <a class="job" href="#"><div class="job__text"><h4>UI Engineer</h4><p>Deliver elegant interfaces that connect technology and seamless user journeys.</p></div><img src="img/arrow-ne.svg" alt=""></a>
+      </div>
+    </div>
+    <div class="shell rule"></div>
+    <div class="shell dept">
+      <div class="dept__meta disp">
+        <div class="dept__name">Data &amp; Insights <span class="chip">2 roles</span></div>
+        <p>Turn data into actionable insights.</p>
+      </div>
+      <div class="dept__list disp">
+        <a class="job" href="#"><div class="job__text"><h4>Research Analyst</h4><p>Uncover key trends and empower decision-makers with valuable insights.</p></div><img src="img/arrow-ne.svg" alt=""></a>
+        <div class="rule"></div>
+        <a class="job" href="#"><div class="job__text"><h4>Backend Developer</h4><p>Build scalable systems that power secure, high-traffic digital platforms.</p></div><img src="img/arrow-ne.svg" alt=""></a>
+        <div class="rule"></div>
+        <a class="job" href="#"><div class="job__text"><h4>Support Specialist</h4><p>Assist users, resolve technical issues, and help teams work efficiently.</p></div><img src="img/arrow-ne.svg" alt=""></a>
+        <div class="rule"></div>
+        <div class="more">
+          <span>Looking for more opportunities to grow?</span>
+          <a href="#">Explore All Positions <img src="img/arrow-bend-1.svg" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="shell process__head">
+      <h2 class="h2">Our Hiring Process</h2>
+      <p class="lede">At Deccan AI, we believe in finding the right fit—not just for us but for you too. Here’s what to expect as you go through our hiring process</p>
+    </div>
+    <div class="shell process__body">
+      <div class="stepper" role="tablist" aria-label="Hiring steps">
+        <button class="stepper__line" role="tab" aria-label="Step 1"><i></i></button><div class="stepper__tick"></div>
+        <button class="stepper__line" role="tab" aria-label="Step 2"><i></i></button><div class="stepper__tick"></div>
+        <button class="stepper__line" role="tab" aria-label="Step 3"><i></i></button><div class="stepper__tick"></div>
+        <button class="stepper__line" role="tab" aria-label="Step 4"><i></i></button><div class="stepper__tick"></div>
+        <button class="stepper__line" role="tab" aria-label="Step 5"><i></i></button>
+      </div>
+      <div class="step">
+        <div class="step__num disp"><b>01</b></div>
+        <div class="step__text disp" aria-live="polite"><h4>Exceptional People</h4><p>Share your resume, portfolio, and a brief note about your interest in joining us.</p></div>
+        <div class="arrows">
+          <button data-dir="-1" aria-label="Previous step"><img src="img/arrow-left.svg" alt=""></button>
+          <button data-dir="1" aria-label="Next step"><img src="img/arrow-right.svg" alt=""></button>
+        </div>
+      </div>
+      <div class="mosaic" aria-hidden="true">
+        <div class="hp-stage">
+          <div class="hp-bgwrap">
+            <img class="hp-bg hp-bg--a" src="img/hero-team-bg.png" alt="">
+            <img class="hp-bg hp-bg--b" src="img/hp/bg-welcome.png" alt="">
+          </div>
+          <div class="hp-world">
+            <div class="hp-drift">
+              <div class="hp-layer hp-sockets"></div>
+              <div class="hp-a hp-glow" data-a="glow"><img src="img/hp/glow-candidate.svg" alt=""></div>
+              <div class="hp-a hp-glow" data-a="glowTeam"><img src="img/hp/glow-team.svg" alt=""></div>
+              <div class="hp-layer hp-faces"></div>
+              <svg class="hp-wires" viewBox="0 0 1216 480" width="1216" height="480"><defs></defs></svg>
+              <div class="hp-layer hp-youlayer"></div>
+
+              <!-- 01 · exceptional people -->
+              <div class="hp-a hp-bracket" data-a="bracket"><i></i><i></i><i></i><i></i></div>
+              <p class="hp-a hp-label hp-label--hi" data-a="labYou">YOU</p>
+
+              <!-- 02 · introductory call -->
+              <div class="hp-a hp-deccan" data-a="deccan"><img src="img/hp/logo-tile.svg" alt=""></div>
+              <div class="hp-a hp-pulse" data-a="dot2"><img src="img/hp/pulse.svg" alt=""></div>
+              <div class="hp-a hp-pill" data-a="call"><span class="hp-dot"><img src="img/hp/dot-live.svg" alt=""></span><span>On call  ·  <b class="hp-clock">24:06</b></span></div>
+              <p class="hp-a hp-label" data-a="labCand">CANDIDATE</p>
+              <p class="hp-a hp-label" data-a="labTeam">HIRING TEAM</p>
+
+              <!-- 03 · role assessment -->
+              <div class="hp-a hp-scan" data-a="scan"><div class="hp-scan__clip"><div class="hp-scan__trail"></div></div><div class="hp-scan__beam"></div></div>
+              <div class="hp-a hp-card" data-a="card">
+                <div class="hp-card__head"><span class="hp-card__title">Role Assessment</span><span class="hp-badge"><span class="hp-dot"><img src="img/hp/dot-review.svg" alt=""></span>In review</span></div>
+                <div class="hp-card__rule"></div>
+                <div class="hp-card__prog"><div class="hp-card__bar"><i></i></div></div>
+                <div class="hp-card__rows">
+                  <div class="hp-row" data-done="00:02"><span class="hp-row__dot"><img src="img/hp/dot-queued.svg" alt=""></span><span class="hp-row__t">Task brief received</span><span class="hp-row__m">queued</span></div>
+                  <div class="hp-row" data-done="00:14"><span class="hp-row__dot"><img src="img/hp/dot-queued.svg" alt=""></span><span class="hp-row__t">Past work shared</span><span class="hp-row__m">queued</span></div>
+                  <div class="hp-row" data-run><span class="hp-row__dot"><img src="img/hp/dot-queued.svg" alt=""></span><span class="hp-row__t">Problem solving</span><span class="hp-row__m">queued</span></div>
+                  <div class="hp-row"><span class="hp-row__dot"><img src="img/hp/dot-queued.svg" alt=""></span><span class="hp-row__t">Panel review</span><span class="hp-row__m">queued</span></div>
+                </div>
+                <div class="hp-card__foot"></div>
+              </div>
+              <div class="hp-a hp-side" data-a="side1"><div class="hp-line"><img src="img/hp/line-label.svg" alt=""></div><p class="hp-label">TASK OR PAST WORK</p></div>
+              <div class="hp-a hp-side" data-a="side2"><div class="hp-line"><img src="img/hp/line-label.svg" alt=""></div><p class="hp-label">SKILLS SIGNAL</p></div>
+              <p class="hp-a hp-label" data-a="labCand3">CANDIDATE</p>
+
+              <!-- 04 · interviews -->
+              <div class="hp-a hp-pill hp-pill--sm" data-a="convos"><span class="hp-dot"><img src="img/hp/dot-live.svg" alt=""></span><span><span class="hp-count"><b>4</b></span> conversations</span></div>
+              <p class="hp-a hp-label" data-a="labMgr">MANAGER</p>
+              <p class="hp-a hp-label" data-a="labPeer1">PEER</p>
+              <p class="hp-a hp-label" data-a="labPeer2">PEER</p>
+              <p class="hp-a hp-label" data-a="labCross">CROSS-FUNCTIONAL</p>
+
+              <!-- 05 · welcome aboard -->
+              <div class="hp-a hp-pill hp-pill--sm" data-a="onboarded"><span class="hp-dot"><img src="img/hp/dot-live.svg" alt=""></span><span>Onboarded</span></div>
+              <p class="hp-a hp-label hp-label--hi" data-a="labSeat">YOUR SEAT</p>
+
+              <div class="hp-a hp-ring" data-a="ring"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="office" aria-label="Life at the office">
+    <div class="office__glow" aria-hidden="true"><img src="img/glow-bg.png" alt=""></div>
+    <div class="office__stage">
+      <div class="shot" style="left:10.5px;top:332.03px;width:320px;height:275px"><img src="img/office-1.png" alt="Team working at desks under pendant lights"></div>
+      <div class="shot" style="left:416.5px;top:783.03px;width:320px;height:221px"><img src="img/office-2.png" alt="Engineers collaborating at their workstations"></div>
+      <div class="shot" style="left:957.5px;top:148.03px;width:256px;height:316px"><img src="img/office-3.png" alt="Open-plan office floor"></div>
+      <div class="shot" style="left:173.5px;top:544.03px;width:188px;height:216px"><img src="img/office-4.png" alt="A small meeting by the window"></div>
+      <div class="shot" style="left:905.5px;top:747.03px;width:206px;height:242px"><img src="img/office-5.png" alt="Desks and whiteboards in the office"></div>
+      <div class="shot" style="left:451.5px;top:106.03px;width:168px;height:232px"><img src="img/office-6.png" alt="Overhead view of a team meeting table"></div>
+      <div class="shot" style="left:1079.5px;top:656.03px;width:134px;height:169px"><img src="img/office-7.png" alt="A colleague working on a laptop"></div>
+      <div class="office__cta">
+        <h2>Work where<br>Quality meets Innovation</h2>
+        <a class="btn" href="#roles">Join our team <img class="bend" src="img/arrow-bend-2.svg" alt=""></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq shell">
+    <h2 class="faq__title"><span>Frequently Asked</span><em>Questions</em></h2>
+    <div class="faq__list">
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__n">01.</span><span class="qa__t">Question here</span><img src="img/plus.svg" alt=""></button><div class="qa__a"><div><p>Answer here</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__n">02.</span><span class="qa__t">Question here</span><img src="img/plus.svg" alt=""></button><div class="qa__a"><div><p>Answer here</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__n">03.</span><span class="qa__t">Question here</span><img src="img/plus.svg" alt=""></button><div class="qa__a"><div><p>Answer here</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__n">04.</span><span class="qa__t">Question here</span><img src="img/plus.svg" alt=""></button><div class="qa__a"><div><p>Answer here</p></div></div></div>
+      <div class="qa"><button class="qa__q" aria-expanded="false"><span class="qa__n">05.</span><span class="qa__t">Question here</span><img src="img/plus.svg" alt=""></button><div class="qa__a"><div><p>Answer here</p></div></div></div>
+    </div>
+  </section>
+</main>
+
+<div class="closing">
+  <section class="cta">
+    <div class="cta__bg" aria-hidden="true"><img src="img/cta-bg.png" alt=""></div>
+    <h2>Accuracy is Intelligence</h2>
+    <a class="btn" href="#">Book a Demo <img class="bend" src="img/arrow-bend-2.svg" alt=""></a>
+  </section>
+
+  <footer class="footer">
+    <img class="footer__mark" src="img/wordmark-big.svg" width="1443" height="352" alt="" aria-hidden="true">
+    <div class="footer__inner">
+      <div class="footer__cta">
+        <div class="footer__addr">
+          <address>Deccan.ai, Inc<br>257 Castro Street, Suite #107, Mountain View, California 94041, US</address>
+          <a class="btn" href="#">Contact Us <img src="img/chevron-down.svg" alt=""></a>
+        </div>
+        <div class="to-top"><a href="#top"><img src="img/chevron-up.svg" alt=""> Back to Top</a></div>
+      </div>
+      <div class="footer__cols">
+        <nav class="fcol" aria-label="Company"><h5>//Company</h5><a href="#">Research</a><a href="#">Agentic Platform</a><a href="#">Use cases</a><a href="#">About Us</a><a href="#">Careers</a></nav>
+        <nav class="fcol" aria-label="Products"><h5>//products</h5><a href="#">RL Environment</a><a href="#">Helix</a><a href="#">Enterprise OS</a></nav>
+        <nav class="fcol" aria-label="Resources"><h5>//Resources</h5><a href="#">Blogs</a><a href="#">Datasets</a><a href="#">Case Studies</a></nav>
+        <nav class="fcol" aria-label="Contact"><h5>//Contact</h5><a href="#">Contact Us</a><a href="mailto:hey@deccan.ai">hey@deccan.ai</a></nav>
+      </div>
+      <div class="policies">
+        <a href="#">Privacy Policy</a><img src="img/footer-rule.svg" alt="">
+        <a href="#">Terms &amp; Conditions</a><img src="img/footer-rule.svg" alt="">
+        <a href="#">DPA (Data Processing Agreement)</a><img src="img/footer-rule.svg" alt="">
+        <a href="#">Cookies Policy</a>
+      </div>
+      <div class="legal"><small>Copyright © 2026. All rights reserved</small><small>Designed by 37degree</small></div>
+    </div>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="hiring.js"></script>
+<script>
+(() => {
+  const DUR = 6000;
+
+  // meet the team carousel
+  const team = document.querySelector(".team");
+  const track = team.querySelector(".team__track");
+  const dots = [...team.querySelectorAll(".dot")];
+  const toggle = team.querySelector(".play-toggle");
+  let slide = 0, paused = false, timer;
+  const goSlide = i => {
+    slide = (i + dots.length) % dots.length;
+    const s = track.children[0];
+    track.style.transform = `translateX(${-slide * (s.offsetWidth + 44)}px)`;
+    dots.forEach((d, k) => {
+      d.classList.toggle("is-active", k === slide);
+      d.setAttribute("aria-selected", k === slide);
+      const bar = d.querySelector("i"); bar.style.animation = "none"; bar.offsetWidth; bar.style.animation = "";
+    });
+    schedule();
+  };
+  const schedule = () => { clearTimeout(timer); if (!paused) timer = setTimeout(() => goSlide(slide + 1), DUR); };
+  team.style.setProperty("--dur", DUR + "ms");
+  dots.forEach((d, i) => d.addEventListener("click", () => goSlide(i)));
+  toggle.addEventListener("click", () => {
+    paused = !paused;
+    team.classList.toggle("is-paused", paused);
+    toggle.setAttribute("aria-pressed", paused);
+    toggle.setAttribute("aria-label", paused ? "Play card rotation" : "Pause card rotation");
+    schedule();
+  });
+  addEventListener("resize", () => goSlide(slide));
+  goSlide(0);
+
+  // office collage — photos float at different depths and follow the cursor (desktop layout only)
+  const office = document.querySelector(".office");
+  if (window.gsap && office) {
+    const shots = [...office.querySelectorAll(".shot")];
+    const cta = office.querySelector(".office__cta h2");
+    // bigger photos read as nearer, so they travel further
+    const depth = shots.map(el => Math.min(1, (el.offsetWidth * el.offsetHeight) / (320 * 275)) * .9 + .15);
+    const movers = shots.map(el => ({
+      x: gsap.quickTo(el, "x", { duration: 1.1, ease: "power3.out" }),
+      y: gsap.quickTo(el, "y", { duration: 1.1, ease: "power3.out" }),
+      r: gsap.quickTo(el, "rotation", { duration: 1.4, ease: "power3.out" }),
+    }));
+    const tx = gsap.quickTo(cta, "x", { duration: 1.3, ease: "power3.out" });
+    const ty = gsap.quickTo(cta, "y", { duration: 1.3, ease: "power3.out" });
+    const desktop = () => matchMedia("(min-width: 1201px) and (hover: hover)").matches;
+    office.addEventListener("pointermove", e => {
+      if (!desktop()) return;
+      const r = office.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - .5, ny = (e.clientY - r.top) / r.height - .5;
+      movers.forEach((m, i) => { m.x(-nx * 46 * depth[i]); m.y(-ny * 34 * depth[i]); m.r(nx * 1.6 * depth[i]); });
+      tx(nx * 8); ty(ny * 6);
+    });
+    office.addEventListener("pointerleave", () => { movers.forEach(m => { m.x(0); m.y(0); m.r(0); }); tx(0); ty(0); });
+  }
+
+  // FAQ accordion
+  document.querySelectorAll(".qa").forEach(qa => {
+    const q = qa.querySelector(".qa__q");
+    q.addEventListener("click", () => {
+      const open = !qa.classList.contains("is-open");
+      qa.classList.toggle("is-open", open);
+      q.setAttribute("aria-expanded", open);
+    });
+  });
+})();
+</script>
+</body>
+</html>
