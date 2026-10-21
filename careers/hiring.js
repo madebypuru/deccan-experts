@@ -348,7 +348,27 @@
           .to(br, { keyframes: [{ scale: .9, duration: .1 }, { scale: 1, duration: .5, ease: "back.out(3)" }] })
           .to(you, { opacity: 1, "--b": .4, duration: .35, ease: "power2.out" }, "<")
           .add(() => { blip(you._in, 1.4); moveGlow([150, .7], you._p, false, 0); typeIn(A("labYou"), 0); }, "<")
-          .to(liveFaces(), { opacity: .48, duration: .6, ease: "power2.out" }, "<");
+          .to(liveFaces(), { opacity: .48, duration: .6, ease: "power2.out" }, "<")
+          // after the lock: the lock breathes, and applications keep arriving — crowd faces flip to new people
+          .add(() => {
+            keep(gsap.to(br, { scale: 1.045, duration: .9, ease: "sine.inOut", yoyo: true, repeat: -1 }));
+            const crowdNow = liveFaces();
+            let last = null;
+            const flip = () => {
+              const pick = crowdNow.filter(e => e._live && e !== last && inView(e._p));
+              const e = pick[Math.floor(Math.random() * pick.length)];
+              if (!e) return;
+              last = e;
+              const img = e._in.querySelector("img");
+              keep(gsap.timeline()
+                .to(e._in, { scaleX: 0, duration: .14, ease: "power2.in" })
+                .add(() => { img.src = FACES[faceN++ % FACES.length]; })
+                .to(e._in, { scaleX: 1, duration: .38, ease: "back.out(2.4)" })
+                .fromTo(e, { opacity: .85 }, { opacity: .48, duration: .7, ease: "power2.out" }, "<"));
+            };
+            flip();
+            keep(gsap.delayedCall(.4, function next() { flip(); keep(gsap.delayedCall(.4, next)); }));
+          }, "+=.35");
       },
       // 02 · the call: a dot leaves you, dissolves into Deccan, the next one follows
       () => {
