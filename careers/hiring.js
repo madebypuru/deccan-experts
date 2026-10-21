@@ -38,8 +38,8 @@
     const inView = p => p.x > -T - 30 && p.x < W + 30 && p.y > -T - 30 && p.y < H + 30;
     const at = (el, x, y, cx = 0, cy = 0) => gsap.set(el, { x, y, xPercent: cx, yPercent: cy });
 
-    // Placeholder portraits cropped from the Figma team photo — swap for real headshots here.
-    const FACES = Array.from({ length: 30 }, (_, i) => `img/faces/f${String((i * 7) % 30 + 1).padStart(2, "0")}.jpg`);
+    // AI-generated portraits of fictional people (no real individuals) — swap for real headshots here.
+    const FACES = Array.from({ length: 27 }, (_, i) => `img/faces/f${String((i * 7) % 27 + 1).padStart(2, "0")}.jpg`);
     let faceN = 0;
 
     /* ---------- layouts per step (from the Figma frames) ---------- */
