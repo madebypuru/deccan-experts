@@ -82,7 +82,7 @@ html.gx .ex-tabs button[aria-selected="true"]{color:var(--btn-ink)}
 
 /* ================= grid, all the way through ================= */
 /* content sits on frosted night panels so the guides pass behind it, not through it */
-html.gx .ex-job,html.gx .ex-tabs,html.gx .h3c,html.gx .vc,html.gx .post,html.gx .glass,html.gx .ops__card,html.gx .ops__vis,html.gx .wy,html.gx .cellt__blk,html.gx .fl__c.is-on,
+html.gx .ex-job,html.gx .ex-tabs,html.gx .h3c,html.gx .vc,html.gx .post,html.gx .glass,html.gx .ops__card,html.gx .ops__vis,html.gx .wy,html.gx .cellt__blk,html.gx .tw__panel,
 html.gx .faq__list,html.gx .news,html.gx .ex-more,html.gx .gx-strip,html.gx .ex-film__frame,html.gx .pl--card{
   background:rgba(11,26,29,.66);-webkit-backdrop-filter:blur(16px) saturate(1.1);backdrop-filter:blur(16px) saturate(1.1)}
 html.gx .ex-job:hover{background:rgba(20,40,43,.78)}
@@ -103,7 +103,7 @@ html.gx .gx-strip{list-style:none;display:grid;grid-template-columns:repeat(4,mi
 html.gx .faq>.gx-strip{grid-column:1 / -1;width:100%}
 html.gx .gx-strip li{display:flex;align-items:center;gap:18px;padding:0 22px;font-family:var(--mono);font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.82);white-space:nowrap}
 html.gx .gx-strip li:first-child{padding-left:0}
-html.gx .gx-strip li i{flex:1;min-width:20px;height:16px;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);background:var(--gx-hatch)}
+html.gx .gx-strip li i{flex:1;min-width:20px}
 html.gx .gx-strip b{font-weight:400;color:#fff}
 
 /* roles: four columns; the two empty cells in the second row become a hatched block */
@@ -165,7 +165,7 @@ html.gx .ex-job__lvl,html.gx .ex-job__meta{font-family:var(--mono);letter-spacin
 html.gx .ex-job h4{font-size:20px}
 html.gx .ex-more{display:none}
 html.gx .ex-jobs__cta{grid-column:span 2;display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:22px;border-right:1px solid var(--gx-line);border-bottom:1px solid var(--gx-line);
-  background:linear-gradient(rgba(11,26,29,.55),rgba(11,26,29,.55)),var(--gx-hatch);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+  background:rgba(11,26,29,.55);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 html.gx .ex-jobs__cta p{max-width:420px;font-family:var(--mono);font-size:12px;line-height:20px;letter-spacing:1px;text-transform:uppercase;color:rgba(235,229,219,.75)}
 html.gx .ex-jobs__cta .hx__cta{align-self:flex-end;width:50%;min-width:260px;margin:0}
 @media (max-width:1200px){html.gx .ex-jobs__cta{grid-column:1 / -1}}

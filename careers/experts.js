@@ -126,17 +126,14 @@
 
   /* ---------- FAQ accordion ---------- */
 
-  /* ---------- the work: the column you point at (or focus, or tap) opens; the first stays open until another does ---------- */
-  const fl = $(".fl");
-  if (fl) {
-    const cols = $$(".fl__c", fl);
-    const open = c => cols.forEach(x => { const on = x === c; x.classList.toggle("is-on", on); x.setAttribute("aria-expanded", on); });
-    cols.forEach(c => {
-      c.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") open(c); });
-      c.addEventListener("click", () => open(c));
-      c.addEventListener("focus", () => open(c));
-    });
-  }
+  /* ---------- the work: clicking a row opens it and plays its task in the panel ---------- */
+  $$("[data-tw]").forEach(tw => {
+    const rows = $$(".tw__r", tw), scenes = $$(".tw__sc", tw);
+    rows.forEach((r, i) => $(".tw__q", r).addEventListener("click", () => {
+      rows.forEach((x, k) => { x.classList.toggle("is-on", k === i); $(".tw__q", x).setAttribute("aria-expanded", k === i); });
+      scenes.forEach((s, k) => s.classList.toggle("is-on", k === i));
+    }));
+  });
 
   $$(".qa").forEach(qa => {
     const q = $(".qa__q", qa);

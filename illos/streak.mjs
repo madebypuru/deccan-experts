@@ -44,3 +44,36 @@ export function streak({ id, name, cls, T, head, dir, from, speed, exit = 0.35, 
   ];
   return { defs, markup, css };
 }
+
+// A streak sent from one thing to another at a given time, for drawings with no Figma pose to start on: it comes out of
+// `from` at `launch`, travels at `speed` to `to`, goes in there trail last (it is cut at both ends, square to its path),
+// and waits hidden. `arrive` in the result is when its head reaches `to`, to time what happens there.
+//
+//   const s = shot({ id: id("note"), name: "nt", cls, T, from: [x0, y0], to: [x1, y1], launch: 0.8, speed: 80 });
+export function shot({ id, name, cls, T, from, to, launch, speed, len = 40, width = 8, hex = 0, reach = 40 }) {
+  const dx = to[0] - from[0];
+  const dy = to[1] - from[1];
+  const dist = Math.hypot(dx, dy);
+  const dir = [dx / dist, dy / dist];
+  const nrm = [-dir[1], dir[0]];
+  const end = launch + (dist + len) / speed; // the trail is all the way in
+  const s = streak({ id, name, cls, T, head: from, dir, from: 1, speed, len, width, hex }); // its markup and paint; its timing is replaced below
+  const q = (p, a, b) => [p[0] + nrm[0] * a + dir[0] * b, p[1] + nrm[1] * a + dir[1] * b];
+  const clip = [q(from, -reach, 0), q(from, reach, 0), q(to, reach, 0), q(to, -reach, 0)];
+  const f = (v) => String(Math.round(v * 10) / 10);
+  const tr = (d) => `transform:translate(${n(dir[0] * d)}px,${n(dir[1] * d)}px)`;
+  const defs = s.defs + `<clipPath id="${id}-k"><path d="M${clip.map((p) => p.map(f).join(" ")).join("L")}Z"/></clipPath>`;
+  const markup = `<g clip-path="url(#${id}-k)">${s.markup}</g>`;
+  const css = [
+    keyframes(`${cls}_${name}`, [
+      [0, `opacity:0;${tr(0)}`],
+      [launch, `opacity:0;${tr(0)}`, "step-end"],
+      [launch + 0.01, `opacity:1;${tr(speed * 0.01)}`],
+      [end, `opacity:1;${tr(dist + len)}`, "step-end"],
+      [end + 0.01, `opacity:0;${tr(0)}`],
+      [T, `opacity:0;${tr(0)}`],
+    ], T),
+    `.${name}{opacity:0;animation:${cls}_${name} ${T}s linear}`,
+  ];
+  return { defs, markup, css, arrive: launch + dist / speed, end };
+}

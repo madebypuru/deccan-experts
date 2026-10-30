@@ -33,7 +33,7 @@ body.ex{overflow-x:clip}
 .ex-roles{gap:36px}
 .ex-roles__head{align-items:flex-end}
 .ex-roles__head>div{flex:1;display:flex;flex-direction:column;gap:16px}
-.ex-roles__head .lede{max-width:520px}
+.ex-roles__head .lede{max-width:520px;color:var(--muted)} /* as bright as every other section's intro */
 .ex-tabs{display:flex;gap:4px;padding:4px;width:max-content;max-width:100%;border:1px solid var(--line);border-radius:3px;background:rgba(255,255,255,.015);overflow-x:auto;scrollbar-width:none;margin-inline:max(var(--gutter),(100% - var(--shell))/2)}
 .ex-tabs::-webkit-scrollbar{display:none}
 .ex-tabs button{position:relative;z-index:1;flex:none;height:32px;padding:0 16px;border-radius:2px;font-size:14px;font-weight:500;line-height:32px;color:rgba(246,243,240,.6);transition:color .35s}
@@ -154,7 +154,7 @@ body.ex{overflow-x:clip}
 /* ================= testimonials: a wall (after Flighty) ================= */
 .ex-voices{position:relative;z-index:3;padding:106px 0;display:flex;flex-direction:column;gap:44px}
 .ex-voices .sec-title>div{flex:1;display:flex;flex-direction:column;gap:16px}
-.voices{position:relative;max-height:960px;overflow:hidden;padding-top:56px;margin-top:-56px}
+.voices{position:relative;max-height:960px;overflow:hidden;padding-top:36px;margin-top:-36px;-webkit-mask-image:linear-gradient(transparent 0,#000 36px);mask-image:linear-gradient(transparent 0,#000 36px)} /* columns drifting up fade out under the title instead of covering it */
 .voices__wall{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
 .voices__col{display:flex;flex-direction:column;gap:16px;will-change:transform}
 .voices__col:nth-child(2){padding-top:48px}
@@ -168,7 +168,7 @@ body.ex{overflow-x:clip}
 .vc__who b{font-weight:500;font-size:14px;line-height:19px;color:#fff}
 .vc__who small{font-size:12px;line-height:16px;color:var(--muted)}
 .vc blockquote{font-size:14.5px;line-height:22px;color:rgba(246,243,240,.84)}
-.vc--big blockquote{font-family:var(--display);font-size:20px;line-height:1.35;letter-spacing:-.5px;color:var(--paper)}
+.vc--big blockquote{font-size:17px;line-height:26px;letter-spacing:-.2px;color:var(--paper)}
 .vc--v{aspect-ratio:4/5}
 .vc--tall{aspect-ratio:3/4.4}
 .vc--v>img,.vc--p img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.33,1,.68,1)}
@@ -295,11 +295,11 @@ body.ex{overflow-x:clip}
 }
 
 /* ============ shared grid vocabulary for the trust / work / why / faq sections ============
-   four-column guides, mono labels followed by a hatched run, hairline cells, square corners */
-body.ex{--mono:var(--label);--rule:rgba(255,255,255,.16);--rule-soft:rgba(255,255,255,.09);--cell:rgba(11,26,29,.5);
-  --hatch:repeating-linear-gradient(-60deg,rgba(255,255,255,.2) 0 1px,transparent 1px 6px)}
+   four-column guides, mono labels, hairline cells, square corners */
+body.ex{--mono:var(--label);--rule:rgba(255,255,255,.16);--rule-soft:rgba(255,255,255,.09);--cell:rgba(11,26,29,.5)}
 
 /* ---------- trust: logos in ruled cells ---------- */
+.ex-trust .sec-title>div{flex:1;display:flex;flex-direction:column;gap:16px} /* eyebrow over title, as in every other section */
 .ex-trust .sec-title h2{text-align:left;font-size:36px;line-height:1.36;letter-spacing:-2px}
 html.gx body.ex{--mono:"IBM Plex Mono",ui-monospace,monospace}
 .cellt{position:relative;display:flex;flex-direction:column;gap:24px}
@@ -307,7 +307,6 @@ html.gx body.ex{--mono:"IBM Plex Mono",ui-monospace,monospace}
 .cellt__blk{background:var(--cell);-webkit-backdrop-filter:blur(11px);backdrop-filter:blur(11px);border:1px solid var(--rule)}
 .cellt__two .cellt__blk+.cellt__blk{border-left:0}
 .cellt__lbl{display:flex;align-items:center;gap:16px;padding:16px 22px;font-family:var(--mono);font-size:11.5px;line-height:16px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(235,229,219,.7);border-bottom:1px solid var(--rule)}
-.cellt__lbl i{flex:1;max-width:200px;height:14px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--hatch)}
 .cellt__row{list-style:none;display:grid;margin:0;padding:0}
 .cellt__row--5{grid-template-columns:repeat(5,minmax(0,1fr))}
 .cellt__row--4{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -318,44 +317,193 @@ html.gx body.ex{--mono:"IBM Plex Mono",ui-monospace,monospace}
 .cellt__row--3 img,.cellt__row--4 img{width:auto;filter:brightness(0) invert(1);opacity:.88}
 .cellt .lg-forbes{height:17px}.cellt .lg-et{height:15px}.cellt .lg-bb{height:15px}
 .cellt .pw-cap{font-size:15px;line-height:1.3;letter-spacing:.4px;text-wrap:balance}
-.cellt .pw-ever{font-size:24px}
+.cellt .pw-ever{font-size:16px;line-height:1.3;font-weight:600;letter-spacing:.6px} /* the same size as the text names beside it */
 .cellt__note{padding:14px 22px;border-top:1px solid var(--rule-soft);font-family:var(--mono);font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(246,243,240,.5)}
 
-/* ---------- the work: five columns, the open one widens (after Calendly's Book / Prep / Capture / Follow up) ---------- */
-.fl{display:flex;height:420px;margin-top:56px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);border-left:1px solid var(--rule)}
-.fl__c{position:relative;flex:1 1 0;min-width:0;overflow:hidden;display:flex;flex-direction:column;padding:34px 24px 28px;border-right:1px solid var(--rule);background:rgba(255,255,255,.012);cursor:pointer;outline:none;transition:flex-grow .7s cubic-bezier(.33,1,.68,1),background .5s}
-.fl__c::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;border-bottom:1px solid var(--rule);background:var(--hatch);opacity:.55;transition:opacity .5s}
-.fl__c.is-on{flex-grow:3.4;background:var(--cell)}
-.fl__c.is-on::before{opacity:1}
-.fl__c:not(.is-on):hover,.fl__c:focus-visible{background:rgba(255,255,255,.035)}
-.fl__n{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;color:rgba(235,229,219,.55)}
-.fl__c h3{margin-top:auto;font-family:var(--display);font-weight:400;font-size:22px;line-height:1.2;letter-spacing:-.7px;color:rgba(246,243,240,.7);transition:color .5s}
-.fl__c.is-on h3{color:var(--paper)}
-.fl__in{width:420px;max-width:100%;max-height:0;overflow:hidden;opacity:0;transition:max-height .6s cubic-bezier(.33,1,.68,1),opacity .4s}
-.fl__c.is-on .fl__in{max-height:200px;opacity:1;transition-delay:0s,.15s}
-.fl__kind{margin-top:22px;font-family:var(--mono);font-size:11.5px;line-height:16px;letter-spacing:1.4px;text-transform:uppercase;color:#a7f0e4}
-.fl__line{margin-top:12px;font-size:15px;line-height:23px;color:rgba(255,255,255,.7)}
+/* ---------- the work: a live task panel beside an accordion of the five kinds of work (after Cohere's models) ---------- */
+.tw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;align-items:start}
+.tw__panel{grid-column:1/3;position:relative;height:500px;overflow:hidden;border:1px solid var(--rule);background:var(--cell)}
+.tw__sc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:40px 56px;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .6s cubic-bezier(.33,1,.68,1);pointer-events:none}
+.tw__sc.is-on{opacity:1;transform:none;transition-delay:.12s}
+.tw__panel{container-type:inline-size;background:radial-gradient(70% 60% at 50% 30%,rgba(255,255,255,.05),transparent 70%),var(--cell)}
+.eo{position:absolute;inset:0;--u:calc(100cqw / 608);font-size:calc(16*var(--u));font-family:var(--sans);color:rgba(244,242,239,.86)}
+.eo-k{font-size:calc(10.499*var(--u));line-height:calc(14*var(--u));letter-spacing:calc(.6*var(--u));text-transform:uppercase;color:rgba(244,242,239,.45)}
+.eo p{margin:0}
+.eo-win{position:absolute;left:calc(40*var(--u));right:calc(40*var(--u));top:calc(104*var(--u));bottom:-1px;border:1px solid rgba(255,255,255,.16);border-bottom:0;border-radius:calc(10*var(--u)) calc(10*var(--u)) 0 0;background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.01) 60%);-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
+.eo-bar{display:flex;align-items:center;gap:calc(10*var(--u));padding:calc(10*var(--u)) calc(10*var(--u)) 0 calc(10*var(--u))}
+.eo-bar>i{width:1px;height:calc(14*var(--u));background:rgba(255,255,255,.18)}
+.eo-tab{padding:calc(4*var(--u)) calc(6*var(--u));font-size:calc(10.499*var(--u));letter-spacing:calc(.3*var(--u));text-transform:uppercase;white-space:nowrap;color:rgba(244,242,239,.42)}
+.eo-tab.is-on{background:rgba(255,255,255,.1);color:rgba(244,242,239,.85)}
+.eo-st{display:inline-flex;align-items:center;gap:calc(6*var(--u));margin-left:auto;padding:calc(4*var(--u)) calc(10*var(--u));border:1px solid rgba(255,255,255,.14);border-radius:calc(99*var(--u));background:rgba(0,0,0,.35);font-size:calc(11*var(--u));white-space:nowrap;color:rgba(244,242,239,.85)}
+.eo-st b{width:calc(7*var(--u));height:calc(7*var(--u));border-radius:50%;background:#97ff43;box-shadow:0 0 calc(6*var(--u)) currentColor}
+.eo-st--r b{background:#ff5b4d}.eo-st--y b{background:#ffd543}.eo-st--g b{background:#97ff43}
+.eo-prog{position:relative;height:1px;margin:calc(10*var(--u)) calc(10*var(--u)) 0;background:rgba(255,255,255,.12)}
+.eo-prog i{position:absolute;inset:0;background:rgba(255,255,255,.7);transform:scaleX(0);transform-origin:left}
+.eo-pill{position:absolute;display:inline-flex;align-items:center;height:calc(32*var(--u));padding:0 calc(14*var(--u));border:1px solid rgba(255,255,255,.28);border-radius:calc(99*var(--u));background:rgba(255,255,255,.09);font-size:calc(10.499*var(--u));letter-spacing:calc(.3*var(--u));text-transform:uppercase;white-space:nowrap;color:rgba(244,242,239,.82)}
+.eo-flow .eo-pill{position:static}
+.eo-pill--solid{justify-content:space-between}
+.eo-pill em{font-style:normal}
+.eo-pill--dash{border-style:dashed;border-color:rgba(126,252,254,.55);background:transparent;color:#c9fbfb}
+.eo-pill--bad{border-color:rgba(255,120,105,.55);color:#ffb3a8}
+.eo-score{position:static;margin-left:calc(10*var(--u));margin-right:calc(-6*var(--u));padding:calc(3*var(--u)) calc(7*var(--u));border:1px solid rgba(255,255,255,.14);border-radius:calc(4*var(--u));font-size:calc(10.499*var(--u));color:#a7f0e4}
+.eo-score--bad{color:#ffb3a8;border-color:rgba(255,120,105,.35)}
+.eo-wires,.eo-loop{position:absolute;inset:0;width:100%;height:100%;overflow:visible;fill:none}
+.eo-wire,.eo-loop path{stroke:rgba(255,255,255,.55);stroke-width:1;vector-effect:non-scaling-stroke}
+.eo-loop path{stroke:rgba(255,255,255,.32);stroke-dasharray:3 4}
+.eo-head path{fill:#7efcfe;stroke:none}
+.eo-run{fill:#7efcfe;offset-path:path("M176 52H200Q210 52 210 62V112Q210 122 220 122H262");filter:drop-shadow(0 0 calc(3*var(--u)) #7efcfe)}
+
+/* capture */
+.eo-view{position:relative;height:calc(178*var(--u));margin:calc(16*var(--u)) calc(16*var(--u)) 0;border:1px solid rgba(255,255,255,.12);background:radial-gradient(rgba(255,255,255,.2) calc(.8*var(--u)),transparent calc(1.101*var(--u))) 0 0/calc(4*var(--u)) calc(4*var(--u)),linear-gradient(180deg,rgba(126,252,254,.05),transparent)}
+.eo-view__c{position:absolute;width:calc(14*var(--u));height:calc(14*var(--u));border:0 solid rgba(255,255,255,.7)}
+.eo-view__c:nth-child(1){top:calc(8*var(--u));left:calc(8*var(--u));border-width:1px 0 0 1px}.eo-view__c:nth-child(2){top:calc(8*var(--u));right:calc(8*var(--u));border-width:1px 1px 0 0}
+.eo-view__c:nth-child(3){bottom:calc(8*var(--u));left:calc(8*var(--u));border-width:0 0 1px 1px}.eo-view__c:nth-child(4){bottom:calc(8*var(--u));right:calc(8*var(--u));border-width:0 1px 1px 0}
+.eo-view__aim{position:absolute;left:50%;top:50%;width:calc(40*var(--u));height:calc(40*var(--u));margin:-20px 0 0 -20px;border:1px solid rgba(126,252,254,.7);border-radius:50%}
+.eo-view__aim::after{content:"";position:absolute;left:50%;top:50%;width:calc(4*var(--u));height:calc(4*var(--u));margin:-2px 0 0 -2px;border-radius:50%;background:#7efcfe}
+.eo-view__tc,.eo-view__task{position:absolute;bottom:calc(12*var(--u));font-size:calc(10.499*var(--u));letter-spacing:calc(.6*var(--u));text-transform:uppercase;color:rgba(244,242,239,.7)}
+.eo-view__tc{left:calc(36*var(--u))}.eo-view__task{right:calc(36*var(--u))}
+.eo-flow--row{display:flex;align-items:center;gap:0;margin:calc(22*var(--u)) calc(16*var(--u)) 0}
+.eo-ln{flex:1;height:1px;min-width:calc(14*var(--u));background:rgba(255,255,255,.4)}
+
+/* rank */
+.eo-win>.eo-k:first-of-type{margin:calc(18*var(--u)) calc(18*var(--u)) calc(6*var(--u))}
+.eo-p{margin:0 calc(18*var(--u))!important;font-size:calc(13.501*var(--u));line-height:calc(20*var(--u))}
+.eo-ab{display:grid;grid-template-columns:1fr 1fr;gap:calc(12*var(--u));margin:calc(18*var(--u)) calc(18*var(--u)) 0}
+.eo-resp{padding:calc(12*var(--u)) calc(14*var(--u));border:1px solid rgba(255,255,255,.14);border-radius:calc(8*var(--u));background:rgba(0,0,0,.25)}
+.eo-resp .eo-k{margin-bottom:calc(6*var(--u))}
+.eo-resp p:last-child{font-size:calc(12.499*var(--u));line-height:calc(18*var(--u));color:rgba(244,242,239,.75)}
+.eo-pref{display:flex;align-items:center;gap:calc(12*var(--u));margin:calc(22*var(--u)) calc(18*var(--u)) 0;font-size:calc(11*var(--u));color:rgba(244,242,239,.6)}
+.eo-pref__track{position:relative;flex:1;display:flex;justify-content:space-between;align-items:center;height:1px;background:rgba(255,255,255,.25)}
+.eo-pref__track i{width:1px;height:calc(7*var(--u));background:rgba(255,255,255,.3)}
+.eo-pref__track b{position:absolute;left:50%;top:50%;width:calc(14*var(--u));height:calc(14*var(--u));margin:-7px 0 0 -7px;border-radius:50%;border:1px solid #7efcfe;background:#0b1517;box-shadow:0 0 calc(10*var(--u)) rgba(126,252,254,.5)}
+
+.eo-why{margin:calc(22*var(--u)) calc(18*var(--u)) 0;padding:calc(12*var(--u)) calc(14*var(--u));border:1px dashed rgba(255,255,255,.22);border-radius:calc(8*var(--u));font-size:calc(12.5*var(--u));line-height:1.45}
+.eo-why .eo-k{margin-bottom:calc(6*var(--u));font-size:calc(9.5*var(--u))}
+/* trace */
+.eo-trace{position:absolute;left:0;top:calc(44*var(--u));width:calc(528*var(--u));height:calc(260*var(--u))}
+
+/* write: you write the gold pair; when it's done it is filed into the gold set (a dashed lead from the card to the set,
+   the new row sliding in at the top) */
+.eo-log{position:absolute;left:calc(32*var(--u));top:calc(64*var(--u));width:calc(236*var(--u));z-index:2;padding:calc(12*var(--u)) calc(14*var(--u));border:1px solid rgba(255,255,255,.22);border-radius:calc(6*var(--u));background:rgba(70,72,72,.6);-webkit-backdrop-filter:blur(calc(6*var(--u)));backdrop-filter:blur(calc(6*var(--u)));font-size:calc(12*var(--u));line-height:calc(19*var(--u));color:rgba(244,242,239,.85)}
+.eo-log .eo-k{margin-top:calc(10*var(--u));color:rgba(244,242,239,.55)}.eo-log .eo-k:first-child{margin-top:0}
+.eo-caret{display:inline-block;width:1px;height:calc(13*var(--u));margin-left:calc(2*var(--u));vertical-align:-2px;background:#7efcfe}
+/* the lead: from the card's right edge, level with the set's newest row, into the set */
+.eo-file{position:absolute;left:calc(268*var(--u));top:calc(173*var(--u));width:calc(32*var(--u));height:1px;background:repeating-linear-gradient(90deg,rgba(126,252,254,.7) 0 calc(3*var(--u)),transparent calc(3*var(--u)) calc(7*var(--u)))}
+.eo-file::after{content:"";position:absolute;right:calc(-1*var(--u));top:calc(-3.5*var(--u));border:calc(3.5*var(--u)) solid transparent;border-left:calc(5*var(--u)) solid #7efcfe;border-right:0}
+.eo-win--set{left:calc(300*var(--u));right:calc(28*var(--u));top:calc(118*var(--u))}
+.eo-cnt{margin-left:auto;font-size:calc(10.5*var(--u));letter-spacing:calc(.3*var(--u));color:rgba(244,242,239,.42);white-space:nowrap}
+.eo-rows{margin-top:calc(12*var(--u));border-top:1px solid rgba(255,255,255,.1)}
+.eo-row{display:grid;grid-template-columns:calc(44*var(--u)) 1fr auto;align-items:center;gap:calc(8*var(--u));height:calc(34*var(--u));padding:0 calc(12*var(--u));border-bottom:1px solid rgba(255,255,255,.07);font-size:calc(11.5*var(--u));color:rgba(244,242,239,.6)}
+.eo-row span{font-size:calc(10.5*var(--u));letter-spacing:calc(.3*var(--u));color:rgba(244,242,239,.38);font-variant-numeric:tabular-nums}
+.eo-row p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.eo-row b{font-weight:400;font-size:calc(11*var(--u));color:rgba(126,252,254,.6)}
+.eo-row--new{background:rgba(126,252,254,.07);color:#e9fffb;box-shadow:inset calc(2*var(--u)) 0 0 #7efcfe}
+.eo-st--float{position:absolute;right:calc(28*var(--u));top:calc(28*var(--u))}
+
+/* review: each claim in the model's answer is checked in turn; the false one is flagged and you correct it */
+.eo-fc{margin:calc(18*var(--u)) calc(18*var(--u)) 0!important;font-size:calc(13.5*var(--u));line-height:calc(22*var(--u));color:rgba(244,242,239,.8)}
+.eo-fc .c{border-radius:calc(2*var(--u));box-shadow:inset 0 -1px 0 transparent}
+.eo-verd{list-style:none;margin:calc(18*var(--u)) calc(18*var(--u)) 0;padding:0;border-top:1px solid rgba(255,255,255,.1)}
+.eo-verd li{display:grid;grid-template-columns:calc(22*var(--u)) 1fr auto;align-items:center;gap:calc(8*var(--u));height:calc(34*var(--u));border-bottom:1px solid rgba(255,255,255,.07);font-size:calc(11.5*var(--u));color:rgba(244,242,239,.7)}
+.eo-verd b{width:calc(16*var(--u));height:calc(16*var(--u));display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);border-radius:50%;font-weight:400;font-size:calc(9.5*var(--u));color:rgba(244,242,239,.6)}
+.eo-verd em{font-style:normal;font-size:calc(10.5*var(--u));letter-spacing:calc(.3*var(--u));text-transform:uppercase;color:#a7f0e4}
+.eo-verd .v3 em{color:#ffb3a8}.eo-verd .v3 b{border-color:rgba(255,120,105,.6);color:#ffb3a8}
+.eo-fix{margin:calc(16*var(--u)) calc(18*var(--u)) 0;padding:calc(10*var(--u)) calc(12*var(--u));border:1px dashed rgba(126,252,254,.5);border-radius:calc(8*var(--u));font-size:calc(12.5*var(--u));line-height:calc(18*var(--u));color:rgba(244,242,239,.85)}
+.eo-fix .eo-k{margin-bottom:calc(4*var(--u))}
+/* a status that changes: two words in one cell, the dot changing with them */
+.eo-sw{display:inline-grid;grid-template-columns:auto auto;column-gap:calc(6*var(--u))}
+.eo-sw b{grid-area:1/1}.eo-sw em{grid-area:1/2;font-style:normal}
+.eo-sw em+em{opacity:0}
+/* motion: only the open card plays, and only while the panel is on screen */
+.tw__sc.is-on .eo *{animation-play-state:var(--illos-play,running)}
+.tw__sc.is-on .eo-prog i{animation:eo-prog 6s linear infinite}
+@keyframes eo-prog{to{transform:scaleX(1)}}
+.tw__sc.is-on .eo-st b{animation:eo-blink 1.6s ease-in-out infinite}
+@keyframes eo-blink{50%{opacity:.35}}
+.tw__sc.is-on .eo-view__aim{animation:eo-aim 6s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes eo-aim{0%,100%{transform:translate(0,0)}30%{transform:translate(calc(88*var(--u)),-1.6em)}62%{transform:translate(-5em,calc(16*var(--u)))}}
+.eo-flow .eo-pill--dash{animation:none}
+.tw__sc.is-on .eo-pref__track b{animation:eo-pref 6s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes eo-pref{0%,15%{left:50%}45%,85%{left:84%}100%{left:50%}}
+.tw__sc.is-on .eo-resp--b{animation:eo-pick 6s ease infinite}
+@keyframes eo-pick{0%,42%{border-color:rgba(255,255,255,.14);box-shadow:none}50%,85%{border-color:rgba(126,252,254,.6);box-shadow:0 0 calc(24*var(--u)) rgba(126,252,254,.12)}100%{border-color:rgba(255,255,255,.14);box-shadow:none}}
+.tw__sc.is-on .eo-run{animation:eo-run 3s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes eo-run{0%{offset-distance:0%;opacity:0}10%{opacity:1}85%{opacity:1}100%{offset-distance:100%;opacity:0}}
+.tw__sc.is-on .eo-loop path{animation:eo-march 1.2s linear infinite}
+@keyframes eo-march{to{stroke-dashoffset:-14}}
+.tw__sc.is-on .eo-caret{animation:eo-blink 1s steps(1) infinite}
+@keyframes eo-a{0%{opacity:1}55%{opacity:0}}
+@keyframes eo-b{0%{opacity:0}55%{opacity:1}}
+@keyframes eo-dot{0%{background:#97ff43}55%{background:#ff5b4d}}
+.tw__sc.is-on .eo-sw em:first-of-type{animation:eo-a 6s steps(1) infinite}
+.tw__sc.is-on .eo-sw em+em{animation:eo-b 6s steps(1) infinite}
+.tw__sc.is-on .eo-sw--r b{animation:eo-dot 6s steps(1) infinite,eo-blink 1.6s ease-in-out infinite}
+@keyframes eo-dot2{0%{background:#97ff43}55%{background:#7efcfe}}
+.tw__sc.is-on .eo-sw--w b{animation:eo-dot2 6s steps(1) infinite,eo-blink 1.6s ease-in-out infinite}
+/* write: the lead marches; at 55% the new pair is filed: the rows drop one place and it slides in on top */
+.tw__sc.is-on .eo-file{animation:eo-file 6s linear infinite}
+@keyframes eo-file{0%,40%{opacity:.25}48%,92%{opacity:1}100%{opacity:.25}}
+.tw__sc.is-on .eo-rows{animation:eo-rows 6s cubic-bezier(.3,.7,.3,1) infinite}
+@keyframes eo-rows{0%,52%{transform:translateY(calc(-34*var(--u)))}62%,94%{transform:none}100%{transform:translateY(calc(-34*var(--u)))}}
+.tw__sc.is-on .eo-row--new{animation:eo-new 6s linear infinite}
+@keyframes eo-new{0%,54%{opacity:0}62%,92%{opacity:1}98%,100%{opacity:0}}
+/* review: claims checked one by one (verdict rows appear with them), the third flagged, then your correction */
+.tw__sc.is-on .eo-fc .c1{animation:eo-ok1 6s linear infinite}
+.tw__sc.is-on .eo-fc .c2{animation:eo-ok2 6s linear infinite}
+@keyframes eo-ok1{0%,8%{background:transparent;box-shadow:inset 0 -1px 0 transparent}14%,94%{background:rgba(126,252,254,.1);box-shadow:inset 0 -1px 0 rgba(126,252,254,.6)}100%{background:transparent;box-shadow:inset 0 -1px 0 transparent}}
+@keyframes eo-ok2{0%,26%{background:transparent;box-shadow:inset 0 -1px 0 transparent}32%,94%{background:rgba(126,252,254,.1);box-shadow:inset 0 -1px 0 rgba(126,252,254,.6)}100%{background:transparent;box-shadow:inset 0 -1px 0 transparent}}
+.tw__sc.is-on .eo-fc .c3{animation:eo-bad 6s linear infinite}
+@keyframes eo-bad{0%,46%{background:transparent;color:inherit;box-shadow:inset 0 -1px 0 transparent}54%,94%{background:rgba(255,120,105,.16);color:#ffc2b6;box-shadow:inset 0 -1px 0 #ff9b8a}100%{background:transparent;color:inherit;box-shadow:inset 0 -1px 0 transparent}}
+.tw__sc.is-on .eo-verd .v1{animation:eo-v1 6s linear infinite}
+.tw__sc.is-on .eo-verd .v2{animation:eo-v2 6s linear infinite}
+.tw__sc.is-on .eo-verd .v3{animation:eo-v3 6s linear infinite}
+@keyframes eo-v1{0%,10%{opacity:.18}16%,94%{opacity:1}100%{opacity:.18}}
+@keyframes eo-v2{0%,28%{opacity:.18}34%,94%{opacity:1}100%{opacity:.18}}
+@keyframes eo-v3{0%,48%{opacity:.18}54%,94%{opacity:1}100%{opacity:.18}}
+.tw__sc.is-on .eo-fix{animation:eo-fix 6s cubic-bezier(.3,.7,.3,1) infinite}
+@keyframes eo-fix{0%,58%{opacity:0;transform:translateY(calc(6*var(--u)))}66%,94%{opacity:1;transform:none}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.eo *{animation:none!important}.eo-prog i{transform:scaleX(.6)}.eo-fc .c3{background:rgba(255,120,105,.16);color:#ffc2b6;box-shadow:inset 0 -1px 0 #ff9b8a}}
+
+.tw__list{grid-column:3/5;padding-left:56px}
+.tw__r{position:relative;border-bottom:1px solid var(--rule)}
+.tw__r::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:linear-gradient(90deg,#7efcfe,rgba(126,252,254,.35));transform:scaleX(0);transform-origin:left}
+.tw__r.is-on::before{transform:scaleX(1);transition:transform .5s cubic-bezier(.33,1,.68,1)}
+.tw__list .tw__r:first-child{border-top:1px solid var(--rule)}
+.tw__q{display:flex;width:100%;align-items:baseline;justify-content:space-between;gap:16px;padding:24px 0;border:0;background:none;color:rgba(246,243,240,.55);font-family:var(--sans);font-weight:400;font-size:20px;line-height:1.3;letter-spacing:-.4px;text-align:left;cursor:pointer;transition:color .3s}
+.tw__q:hover,.tw__r.is-on .tw__q{color:var(--paper)}
+.tw__q:focus-visible{outline:1px solid rgba(126,252,254,.6);outline-offset:4px}
+.tw__n{font-family:var(--mono);font-size:12px;letter-spacing:1.4px;color:rgba(235,229,219,.45);transition:color .3s}
+.tw__r.is-on .tw__n,.tw__q:hover .tw__n{color:#a7f0e4}
+.tw__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.33,1,.68,1)}
+.tw__a>div{overflow:hidden;min-height:0}
+.tw__r.is-on .tw__a{grid-template-rows:1fr}
+.tw__line{margin:-6px 0 26px;max-width:460px;font-size:15px;line-height:23px;color:rgba(255,255,255,.7)}
 @media (max-width:820px){
-  .fl{flex-direction:column;height:auto;margin-top:32px;border-left:0}
-  .fl__c,.fl__c.is-on{flex:none;padding:30px 0 26px;border-right:0;border-bottom:1px solid var(--rule);background:none}
-  .fl__c:last-child{border-bottom:0}
-  .fl__c::before{display:none}
-  .fl__c h3,.fl__c.is-on h3{margin-top:14px;color:var(--paper)}
-  .fl__in,.fl__c.is-on .fl__in{max-height:none;opacity:1;width:auto}
+  .tw{grid-template-columns:minmax(0,1fr);margin-top:32px}
+  .tw__panel{grid-column:auto;height:auto;aspect-ratio:38/31}
+  .tw__sc{padding:28px 20px}
+  .tw__list{grid-column:auto;padding:24px 0 0}
+  .tw__q{padding:20px 0}
 }
 
 /* ---------- faq: about.css styles .qa as its own full-page section; keep the rows tight here ---------- */
 .faq .qa{padding:0;overflow:visible;background:none}
-.ex-faq__head .eyebrow{margin-bottom:-4px}
+.ex-faq__head .eyebrow{margin-bottom:-20px} /* sits on its title as the other sections' eyebrows do */
 .faq__list{border-top:1px solid var(--rule)}
 .faq .qa+.qa::before{display:none}
 .faq .qa{border-bottom:1px solid var(--rule-soft)}
 .faq .qa__q,.faq .qa:first-child .qa__q,.faq .qa:last-child .qa__q{padding:26px 0;gap:28px}
-.faq .qa__n{width:26px}
+.faq .qa__n{width:26px;align-self:flex-start;margin-top:3px} /* on the question's first line, also when it wraps */
 .faq .qa__t{font-size:20px;line-height:28px;letter-spacing:-.6px}
-.faq .qa__q img{width:28px;height:28px;padding:6px;border:1px solid var(--rule);opacity:.85}
-.faq .qa.is-open{background:rgba(11,26,29,.45)}
-.faq .qa.is-open .qa__n{color:#a7f0e4;opacity:1}
+/* Open vs closed is told by text opacity alone: closed rows sit back, hover lifts them, the open row and its answer are
+   at full strength. No fill on the row. The icon's box stays square (it is the button's ::after); only the + turns. */
+.faq .qa__q{position:relative}
+.faq .qa__q img{width:28px;height:28px;padding:6px;opacity:.85}
+.faq .qa__q::after{content:"";position:absolute;right:0;top:50%;box-sizing:border-box;width:28px;height:28px;margin-top:-14px;border:1px solid var(--rule);pointer-events:none}
+.faq .qa__n,.faq .qa__t{opacity:.5;transition:opacity .3s}
+.faq .qa__q:hover .qa__n,.faq .qa__q:hover .qa__t{opacity:.8}
+.faq .qa.is-open .qa__n,.faq .qa.is-open .qa__t{opacity:1}
+.faq .qa__a p{color:rgba(246,243,240,.72)}
 .faq .qa__a p{padding:0 56px 28px 56px}
 @media (max-width:820px){
   .faq .qa__q,.faq .qa:first-child .qa__q,.faq .qa:last-child .qa__q{padding:20px 0;gap:14px}
@@ -373,6 +521,7 @@ html.gx body.ex{--mono:"IBM Plex Mono",ui-monospace,monospace}
   .cellt__row--5 li:nth-child(n+3),.cellt__row--4 li:nth-child(n+3){border-top:1px solid var(--rule-soft)}
   .cellt__row--3 li{padding:0 6px}
   .cellt .pw-cap{font-size:13px}
+  .cellt .pw-ever{font-size:14px}
   .faq .qa__t{min-width:0}
 }
 
@@ -388,25 +537,18 @@ html.gx body.ex{--mono:"IBM Plex Mono",ui-monospace,monospace}
 .h3c__ill svg{display:block;width:100%;height:100%}
 @container (max-width:440px){.h3c__ill .lab{display:none}}
 
-/* ============ closing scene: the Renaissance rooftop, the CTA in its sky (like the hero), the footer under it ============ */
+/* ============ closing scene: the experts' glowing table (lightlines.js runs light along its lines), the CTA in the dark above it, the footer under it ============ */
 .exc{--mono:"IBM Plex Mono",ui-monospace,monospace;--paper:#ebe5db;position:relative;z-index:2;overflow:hidden;background:#0c1d20;color:#fff}
 .exc__scene{position:relative;width:100%;aspect-ratio:1920/1080;min-height:700px}
-.exc__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 70%}
-/* the painting in the site's teal, fading in from the page above and out into the footer below */
-.exc__scene::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(11,79,86,.22);mix-blend-mode:color}
+.exc__img,.exc__scene .ll-fx{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.exc__scene .ll-fx{opacity:0;transition:opacity .6s}
+.exc__scene .ll-fx.is-on{opacity:1}
+/* the photo fading in from the page above and out into the footer below */
 .exc__scene::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
   linear-gradient(180deg,var(--bg,#0b0c0c) 0%,rgba(12,29,32,.55) 16%,rgba(12,29,32,0) 42%),
   linear-gradient(0deg,#0c1d20 0%,rgba(12,29,32,.7) 12%,rgba(12,29,32,0) 32%)}
-.exc__lines{position:absolute;inset:0;z-index:2;pointer-events:none}
-.exc__lines img{position:absolute;max-width:none;height:auto}
-.exc-orbits{left:4.319%;top:26.97%;width:64.39%;opacity:.5}
-.exc-ring{left:30.44%;top:43.17%;width:11.08%;animation:exc-spin 240s linear infinite}
-.exc-ticks{left:30.29%;top:42.74%;width:11.39%;opacity:.7}
-.exc-cross{left:35.27%;top:54.93%;width:2.47%}
-@keyframes exc-spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){.exc-ring{animation:none}}
 /* the hero's four column guides, quieter */
-.exc__guides{position:absolute;inset:0;z-index:2;width:min(var(--shell),100% - 2*var(--gutter));margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);pointer-events:none}
+.exc__guides{position:absolute;inset:0;z-index:2;width:min(var(--shell),100% - 2*var(--gutter));margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);pointer-events:none;-webkit-mask-image:linear-gradient(transparent,#000 160px);mask-image:linear-gradient(transparent,#000 160px)} /* the lines fade in with the photo instead of starting on a hard edge */
 .exc__guides i{border-left:1px solid rgba(255,255,255,.07)}
 .exc__guides i:last-child{border-right:1px solid rgba(255,255,255,.07)}
 .exc__in{position:absolute;z-index:3;left:0;right:0;top:0;margin-inline:auto;padding-top:clamp(110px,9vw,150px);display:grid;grid-template-columns:repeat(4,1fr);align-items:end}
@@ -441,9 +583,6 @@ html.gx body.ex{--mono:"IBM Plex Mono",ui-monospace,monospace}
 
 @media (max-width:1100px){
   .exc h2{font-size:48px}
-}
-@media (max-width:960px){
-  .exc__lines{display:none}
 }
 @media (max-width:820px){
   .exc{display:flex;flex-direction:column}

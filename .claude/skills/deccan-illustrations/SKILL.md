@@ -201,3 +201,53 @@ defs += lq.defs; still.push(lq.markup); css.push(...lq.css);
 - Anything cut into or drawn on a face (holes, slots, labels, bars) must lie in that face's plane: build it in the
   face's own coordinates (across, down) and map it back, so its edges run parallel to the face's edges where it sits.
   Copying a Figma quad and sliding it to a new place left the 05 holes skewed against the board.
+
+## Drawings with no Figma (the Why Deccan cards)
+
+> Superseded on the page: the Why cards are now flat UI cards in HTML/CSS (`careers/why.css`), in the manner of the
+> bento on deccan.ai/enterprise-os (borderless glow cards split by two fading hairlines, title and line on top, a UI
+> running off each card's bottom edge, a soft teal haze behind). The isometric scenes below (`illos/why-*.mjs`) are kept
+> only as a reference for drawing in the glass style without a Figma frame.
+>
+> **Study a reference; never copy it.** The first flat pass reproduced the reference's own drawings (its pipeline, its
+> ring with a status pill, its log, its stack) and was rejected as copying. What makes those cards work: each one *is*
+> the product's mechanism in its own words; real microcopy; one motion that demonstrates the mechanism; greys with one
+> small accent, solid = done and dashed = pending; a different silhouette per card; cropped so it reads as a glimpse of
+> a live system. So each Why card shows how *its* benefit works, with its own silhouette: A a portrait sheet of your
+> answer where a domain lead highlights a phrase, pins a margin note and resolves it; B wide 24-hour lanes where a block
+> of hours is dragged to the evening; C a real month calendar where today steps through and the 2nd and 17th pay out;
+> D stage columns of applicants narrowing to one lit dot. No two cards may share a frame (the user also rejected two
+> isometric cards that were both "object on a disc + tilted text panel + a light between").
+
+The four Why cards (`illos/why-guided`, `why-hours`, `why-paid`, `why-few.mjs`) have no Figma frames; they were drawn
+in this style from each card's own story, at 440 x 260 (D: 320 x 256 beside its HTML number).
+- Start from the card's sentence and show it literally, with the same parts as How it works: glass panels in the
+  plane along world x (`matrix(cos30, 0.5, 0, 1, x, y)`) for anything with words or rows, glass spheres for people,
+  glass cubes for Deccan and the network, thin slabs for a field of things (a week, a hundred applicants), pedestals.
+- For a light sent from one thing to another at a set moment, use `shot()` in `illos/streak.mjs`: it leaves `from` at
+  `launch`, goes into `to` trail last (cut square to its path at both ends), and returns `arrive` to time what happens
+  there (a row lights, a flag goes up, a total steps up).
+- Numbers that change are crossfades between fixed texts ($0.00, then $1,240.00, then $2,420.00); totals that must stay
+  crisp and readable (the "<1%", "22 h this week") stay as the card's own HTML beside or under the drawing.
+- Put a marker next to the thing it belongs to, not at the far end of a sloped row: on a panel in the x plane the rows
+  drop as they go right, so a flag at the far right of row A sits level with row B's start and reads as B's.
+- Colour roles for these cards are set on `.wy__ill` / `.wy-few__ill` in `why.css`, with the card's own ground
+  (`#0b0c0c`); `experts.js` pauses every `[data-illos]` off screen, so the cards need no script of their own.
+- Size each drawing to its art band (300 px with 28 px padding: at most about 410 x 242), or it spills into the padding.
+
+
+## The Work panel cards (flat 2D UI, not glass, not isometric)
+
+The "How experts help AI learn" panel (`.tw__panel` in `careers/experts.html`) is **not** an Illos drawing. The user
+rejected an isometric HUD version: these are flat 2D cards, built in HTML/CSS (`.eo-*` in `experts.css`), after the card
+visuals on deccan.ai/enterprise-os:
+- A hairline window (10 px top radius, open at the bottom, faded out by a mask) with a tab bar: the active tab on a grey
+  chip, `|` separators, a status pill on the right (dark, 1 px border, coloured dot: green running, yellow ranking, red
+  recording or flagged), and a white hairline under the tabs that fills as a timer.
+- Steps are pills: solid grey for done, dashed for active or pending (cyan dashed for the active one, red for a failed one),
+  with a small score chip inside. Elbow connectors are 1 px white lines with small cyan arrowheads.
+- Textures are halftone dot fields (`radial-gradient` dots on a 4 px grid); logs are translucent grey cards over a back
+  window with three dots and a dot matrix, joined by dashed loop arrows.
+- Everything is sized in one unit, `--u: calc(100cqw / 608)` on `.eo`, never `em`: an element with its own font size
+  would scale its padding and positions by that size. Absolute positions inside a scene are percentages of its frame.
+- Only the open card animates, and only while the panel is on screen (`data-illos` on the panel feeds `--illos-play`).

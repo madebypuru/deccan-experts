@@ -52,7 +52,7 @@ body.ex .voices{max-height:760px}
 body.ex .vc--press{padding:20px;display:flex;flex-direction:column;gap:14px;background:linear-gradient(160deg,rgba(17,153,142,.12),rgba(255,255,255,.015) 60%)}
 body.ex .vc__src{display:flex;align-items:center;height:22px;font-family:var(--label);font-size:15px;letter-spacing:.2px;color:#fff}
 body.ex .vc__src img{height:18px;width:auto;filter:brightness(0) invert(1)}
-body.ex .vc--press blockquote{font-family:var(--display);font-size:18px;line-height:1.35;letter-spacing:-.4px;color:var(--paper)}
+body.ex .vc--press blockquote{font-size:16px;line-height:24px;letter-spacing:-.15px;color:var(--paper)}
 body.ex .vc__read{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--teal-ink)}
 body.ex .vc__read img{width:9px;height:9px;filter:invert(83%) sepia(20%) saturate(600%) hue-rotate(110deg)}
 /* open wall: columns settle back into a plain masonry so nothing drifts out of the clip */
