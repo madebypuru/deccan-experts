@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>Illos preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500&display=swap" rel="stylesheet">
+<style>
+:root{--illos-ground:#0b1a1d;--illos-ink:#ebe5db;--illos-line:#8fa3a6;--illos-faint:rgba(255,255,255,.14);--illos-accent:#5fe0cf;--illos-accent-dim:#178c7d;--illos-alert:#fb3748}
+body{margin:0;background:#0b1a1d;display:grid;place-items:center;min-height:100vh}
+[data-illos]{container-type:inline-size;width:min(720px,92vw)}
+[data-illos] svg{display:block;width:100%;height:auto}
+@container (max-width:440px){[data-illos] .lab{display:none}}
+</style>
+<div data-illos id="slot"></div>
+<script>fetch("request-invite.svg").then(r=>r.text()).then(t=>document.getElementById("slot").innerHTML=t)</script>

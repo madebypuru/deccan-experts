@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="globe">
+<path id="vector" d="M22.5 3.46893C11.9893 3.46893 3.46872 11.9895 3.46872 22.5002C3.46872 33.0109 11.9893 41.5314 22.5 41.5314C33.0106 41.5314 41.5312 33.0109 41.5312 22.5002C41.5312 11.9895 33.0106 3.46893 22.5 3.46893Z" fill="url(#paint0_linear_0_28)"/>
+<path id="vector_2" d="M5.3437 22.5002H39.6562M22.5 5.34393C26.7912 10.0419 29.2299 16.1387 29.3625 22.5002C29.2299 28.8617 26.7912 34.9584 22.5 39.6564C18.2087 34.9584 15.77 28.8617 15.6375 22.5002C15.77 16.1387 18.2087 10.0419 22.5 5.34393Z" stroke-width="3.75" stroke-linecap="round" stroke-linejoin="round" stroke="#121314"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_28" x1="3.46872" y1="22.5002" x2="41.5312" y2="22.5002" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1279F7"/>
+<stop offset="1" stop-color="#0A4791"/>
+</linearGradient>
+</defs>
+</svg>

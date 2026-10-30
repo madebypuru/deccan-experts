@@ -1,0 +1,174 @@
+/* "Grid" version of the Deccan Experts page — the hero's language carried through every section:
+   four column guides, mono uppercase labels with hatched runs, hairline rows, square cards,
+   a paper primary button and a hairline secondary one. Turned on with experts.html?style=grid. */
+html.gx{--mono:"IBM Plex Mono",ui-monospace,monospace;--gx-night:#0b1a1d;--gx-line:rgba(255,255,255,.08);--gx-line-2:rgba(255,255,255,.16);--gx-paper:#ebe5db;
+  --gx-hatch:repeating-linear-gradient(-60deg,rgba(255,255,255,.2) 0 1px,transparent 1px 6px)}
+html.gx body.ex{--bg:var(--gx-night);background:var(--gx-night)}
+
+/* the column guides run down the whole page, behind the content */
+html.gx body.ex::before{content:"";position:fixed;top:0;bottom:0;left:50%;z-index:0;width:min(var(--shell),100% - 2*var(--gutter));transform:translateX(-50%);pointer-events:none;
+  background:linear-gradient(90deg,var(--gx-line) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--gx-line)}
+html.gx main>section,html.gx .closing>*{position:relative}
+html.gx main>section:not(.hx):not(:first-child){border-top:1px solid var(--gx-line)}
+
+/* labels: mono, wide-tracked, followed by a hatched run */
+html.gx .eyebrow,html.gx .ex .eyebrow.ex-eyebrow{display:flex;align-items:center;gap:16px;font-family:var(--mono);font-size:12px;line-height:18px;letter-spacing:1.6px;text-transform:uppercase;color:rgba(235,229,219,.62);opacity:1}
+html.gx .eyebrow::after{content:"";flex:none;width:120px;height:14px;border-top:1px solid var(--gx-line-2);border-bottom:1px solid var(--gx-line-2);background:var(--gx-hatch)}
+html.gx .quality__head .eyebrow{justify-content:center}
+html.gx .chip,html.gx .ex-tabs button,html.gx .h3c__w,html.gx .arc__lbl small,html.gx .pl__tags i,html.gx .vc__tag,html.gx .qa__n,html.gx .post__meta,
+html.gx .fcol h5,html.gx .ex-brand span,html.gx .wk-tab__n,html.gx .gpin b,html.gx .ex-job__rate span,html.gx .h3c__n,html.gx .vc__src,html.gx .post__go,html.gx .vc__read{font-family:var(--mono);letter-spacing:1px;text-transform:uppercase}
+html.gx .chip{border-radius:0;font-size:11px;padding:3px 8px}
+html.gx .topbar{font-family:var(--mono);font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;background:#081416;border-bottom:1px solid var(--gx-line)}
+
+/* buttons: paper block for the main action, hairline rule above and below for the secondary */
+html.gx .btn{height:44px;padding:0 20px;border-radius:0;gap:12px;font-size:14.5px;background:#f6f3f0}
+html.gx .btn:hover{transform:none;gap:16px;background:#fff}
+html.gx .nav .btn{height:40px}
+html.gx .sec-title .btn,html.gx .btn--ghost,html.gx .ex-more .btn,html.gx .office__cta .btn+.btn{background:rgba(11,26,29,.2);color:#fff;border:0;border-top:1px solid rgba(255,255,255,.28);border-bottom:1px solid rgba(255,255,255,.28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html.gx .sec-title .btn:hover,html.gx .btn--ghost:hover,html.gx .ex-more .btn:hover{background:rgba(255,255,255,.08)}
+html.gx .sec-title .btn img,html.gx .ex-more .btn img{filter:invert(1)}
+
+/* square everything that was rounded */
+html.gx .glass,html.gx .vc,html.gx .post,html.gx .post__img,html.gx .h3c,html.gx .wk,html.gx .wk-tab,html.gx .wk__stage,html.gx .wk-card,html.gx .wk-resp,
+html.gx .wk-prompt,html.gx .wk-note,html.gx .wk-score,html.gx .wk-steps,html.gx .pl--card,html.gx .ex-film__frame,html.gx .ex-film__pic,html.gx .news,html.gx .ex-tabs,
+html.gx .ex-tabs button,html.gx .ex-tabs__ink,html.gx .shot,html.gx .reel__item{border-radius:0}
+html.gx .pl__pill,html.gx .pl__dots,html.gx .voices__pill,html.gx .voices__more,html.gx .voices__apply,html.gx .voices__faces img{border-radius:2px}
+
+/* section heads sit on a hairline row; the lede reads as a second column like the hero */
+html.gx .sec-title{padding-top:28px;border-top:1px solid var(--gx-line);align-items:flex-end}
+html.gx .h2{letter-spacing:-.05em}
+
+/* roles: tabs read like the hero's label row */
+html.gx .ex-tabs{padding:0;gap:0;border:0;border-top:1px solid var(--gx-line-2);border-bottom:1px solid var(--gx-line-2);background:none}
+html.gx .ex-tabs button{height:46px;padding:0 22px;font-size:12px;color:rgba(235,229,219,.6)}
+html.gx .ex-tabs button+button{border-left:1px solid var(--gx-line)}
+html.gx .ex-tabs__ink{top:0;height:46px}
+html.gx .ex-jobs{border-color:var(--gx-line)}
+html.gx .ex-job{border-color:var(--gx-line)}
+html.gx .ex-more{margin-top:8px;padding:18px 0;border-top:1px solid var(--gx-line);border-bottom:1px solid var(--gx-line)}
+html.gx .ex-more span{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;line-height:20px}
+
+/* trust: the logo cards become one ruled band */
+html.gx .glass{background:rgba(11,26,29,.35);border-color:var(--gx-line-2)}
+html.gx .partners__lbl,html.gx .press small,html.gx .partners__more{font-family:var(--mono);font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase}
+
+/* how it works: hatched rule above each card body */
+html.gx .h3c{border-color:var(--gx-line-2)}
+html.gx .h3c__art{border-bottom:0}
+html.gx .h3c__body{position:relative;padding-top:30px}
+html.gx .h3c__body::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;border-top:1px solid var(--gx-line-2);border-bottom:1px solid var(--gx-line-2);background:var(--gx-hatch)}
+html.gx .h3c__n{border-radius:0;background:none;border:1px solid var(--gx-line-2);font-size:11px}
+html.gx .arc__lbl b{font-family:var(--mono);font-weight:400;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase}
+
+/* testimonials + blog cards */
+html.gx .vc{border-color:var(--gx-line-2);background:rgba(11,26,29,.4)}
+html.gx .vc__who{border-bottom-style:solid;border-bottom-color:var(--gx-line)}
+html.gx .vc__who img{border-radius:0}
+html.gx .post{border-color:var(--gx-line-2);background:rgba(11,26,29,.4)}
+html.gx .post__go{font-size:12px}
+html.gx .voices__fade{background:linear-gradient(180deg,transparent,var(--gx-night) 82%)}
+
+/* faq rows + footer columns */
+html.gx .qa{border-color:var(--gx-line)}
+html.gx .faq__title em{color:var(--gx-paper)}
+html.gx .fcol h5{font-size:11.5px}
+
+@media (max-width:820px){
+  html.gx body.ex::before{background-size:50% 100%}
+  html.gx .eyebrow::after{width:64px}
+  html.gx .ex-tabs button{padding:0 14px;font-size:11px}
+}
+html.gx .ex-tabs button[aria-selected="true"]{color:var(--btn-ink)}
+
+/* ================= grid, all the way through ================= */
+/* content sits on frosted night panels so the guides pass behind it, not through it */
+html.gx .ex-job,html.gx .ex-tabs,html.gx .h3c,html.gx .vc,html.gx .post,html.gx .glass,html.gx .ops__card,html.gx .ops__vis,html.gx .wy,html.gx .cellt__blk,html.gx .fl__c.is-on,
+html.gx .faq__list,html.gx .news,html.gx .ex-more,html.gx .gx-strip,html.gx .ex-film__frame,html.gx .pl--card{
+  background:rgba(11,26,29,.66);-webkit-backdrop-filter:blur(16px) saturate(1.1);backdrop-filter:blur(16px) saturate(1.1)}
+html.gx .ex-job:hover{background:rgba(20,40,43,.78)}
+html.gx .qa{background:none}
+
+/* heads: copy across three columns, the CTA stack in the fourth (like the hero) */
+html.gx .gx-head{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;align-items:end}
+html.gx .gx-head>div:first-child{grid-column:1 / span 3;padding-right:32px}
+html.gx .gx-ctas{grid-column:4;display:flex;flex-direction:column;align-self:end}
+html.gx .gx-ctas .hx__cta{height:46px;font-size:14.5px}
+html.gx .gx-ctas .hx__cta--a{margin-left:0}
+html.gx .gx-ctas .hx__cta--b{margin-left:0;margin-top:6px;background:rgba(11,26,29,.5)}
+html.gx .gx-ctas .hx__cta--b:hover{background:rgba(255,255,255,.08)}
+html.gx .sec-title{padding-top:28px}
+
+/* closing strip: the hero's label row */
+html.gx .gx-strip{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:56px;padding:20px 0 22px;border-top:1px solid var(--gx-line-2);border-bottom:1px solid var(--gx-line)}
+html.gx .faq>.gx-strip{grid-column:1 / -1;width:100%}
+html.gx .gx-strip li{display:flex;align-items:center;gap:18px;padding:0 22px;font-family:var(--mono);font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.82);white-space:nowrap}
+html.gx .gx-strip li:first-child{padding-left:0}
+html.gx .gx-strip li i{flex:1;min-width:20px;height:16px;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18);background:var(--gx-hatch)}
+html.gx .gx-strip b{font-weight:400;color:#fff}
+
+/* roles: four columns; the two empty cells in the second row become a hatched block */
+html.gx .ex-jobs{grid-template-columns:repeat(4,minmax(0,1fr))}
+html.gx .ex-more{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;padding:0;gap:0}
+html.gx .ex-more span{grid-column:1 / span 2;padding:20px 0}
+html.gx .ex-more .btn{grid-column:4;width:100%;height:56px}
+
+/* how it works: two columns each side */
+html.gx .how3__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+html.gx .how3__cards{padding-left:32px}
+
+/* testimonials: one card column per guide column */
+html.gx .voices__wall{gap:0}
+html.gx .voices__col{padding:0 10px}
+html.gx .voices__col:first-child{padding-left:0}
+html.gx .voices__col:last-child{padding-right:0}
+
+/* blogs: the first post takes two columns, the others one each */
+html.gx .ex-blogs__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+html.gx .ex-blogs__grid .post:first-child{grid-column:span 2}
+html.gx .ex-blogs__grid .post+.post{border-left:0}
+
+/* faq: two columns for the title, two for the questions */
+html.gx .ex .faq{grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
+html.gx .faq__list{padding:0 0 0 24px}
+
+@media (max-width:1200px){
+  html.gx .ex-jobs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html.gx .gx-strip li{font-size:11px;letter-spacing:1px;padding:0 14px}
+}
+@media (max-width:820px){
+  html.gx .gx-head{grid-template-columns:1fr;row-gap:24px}
+  html.gx .gx-head>div:first-child{grid-column:1;padding-right:0}
+  html.gx .gx-ctas{grid-column:1}
+  html.gx .ex-jobs,html.gx .ex-blogs__grid{grid-template-columns:1fr}
+  html.gx .ex-blogs__grid .post:first-child{grid-column:auto}
+  html.gx .ex-blogs__grid .post+.post{border-left:1px solid var(--gx-line-2);border-top:0}
+  html.gx .ex-more{grid-template-columns:1fr}
+  html.gx .ex-more span,html.gx .ex-more .btn{grid-column:1}
+  html.gx .how3__grid,html.gx .ex .faq{grid-template-columns:1fr}
+  html.gx .how3__cards,html.gx .faq__list{padding-left:0}
+  html.gx .voices__col{padding:0 !important}
+  html.gx .gx-strip{grid-template-columns:1fr 1fr;row-gap:12px}
+  html.gx .gx-strip li{padding:0 !important;font-size:11px}
+  html.gx .gx-strip li i{display:none}
+}
+
+/* declutter: quieter guides, labels without the hatched tail, fewer rules */
+html.gx{--gx-line:rgba(255,255,255,.05)}
+html.gx .eyebrow::after{display:none}
+html.gx .sec-title{border-top:0;padding-top:0}
+html.gx .h3c__body::before{display:none}
+html.gx .h3c__body{padding-top:20px;border-top:1px solid var(--gx-line-2)}
+html.gx .closing,html.gx .footer{background:var(--gx-night)}
+
+/* roles: compact cards; the grid's last two cells hold the sign-up call, so the strip below goes */
+html.gx .ex-job__lvl,html.gx .ex-job__meta{font-family:var(--mono);letter-spacing:1.2px}
+html.gx .ex-job h4{font-size:20px}
+html.gx .ex-more{display:none}
+html.gx .ex-jobs__cta{grid-column:span 2;display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:22px;border-right:1px solid var(--gx-line);border-bottom:1px solid var(--gx-line);
+  background:linear-gradient(rgba(11,26,29,.55),rgba(11,26,29,.55)),var(--gx-hatch);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+html.gx .ex-jobs__cta p{max-width:420px;font-family:var(--mono);font-size:12px;line-height:20px;letter-spacing:1px;text-transform:uppercase;color:rgba(235,229,219,.75)}
+html.gx .ex-jobs__cta .hx__cta{align-self:flex-end;width:50%;min-width:260px;margin:0}
+@media (max-width:1200px){html.gx .ex-jobs__cta{grid-column:1 / -1}}
+@media (max-width:820px){html.gx .ex-jobs__cta .hx__cta{width:100%;min-width:0}}
+/* trust cards: the same frosted night panel as every other card (about.css's lighter glass let the guides through) */
+html.gx .glass{background:rgba(11,26,29,.7);-webkit-backdrop-filter:blur(18px) saturate(1.1);backdrop-filter:blur(18px) saturate(1.1)}

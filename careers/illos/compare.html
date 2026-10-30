@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>Compare</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#1a1a1a;display:flex;gap:16px;padding:16px;font:12px system-ui;color:#999}
+figure{margin:0}
+.art{width:518px;height:339px;background:#050808;position:relative;overflow:hidden}
+.art img{display:block;width:518px;height:339px}
+[data-illos]{--illos-ground:#050808;--illos-ink:#f5fdfe;--illos-line:#588f98;--illos-faint:rgba(255,255,255,.1);--illos-accent:#7efcfe;--illos-accent-dim:#2a8f96;--illos-alert:#fb3748;width:518px;height:339px}
+[data-illos] svg{display:block;width:100%;height:100%}
+</style>
+<figure><div class="art"><img id="ref"></div><figcaption>Figma</figcaption></figure>
+<figure><div class="art" data-illos id="slot"></div><figcaption>SVG</figcaption></figure>
+<script>
+const n=new URLSearchParams(location.search).get("n")||"request-invite";
+const refs={"request-invite":"01-applicant","profile-evaluation":"02-profile","induction":"03-induction","paid-launchpad":"04-launchpad","project-deployment":"05-live"};
+document.getElementById("ref").src="ref/"+refs[n]+".png";
+fetch(n+".svg?"+Date.now()).then(r=>r.text()).then(t=>document.getElementById("slot").innerHTML=t);
+</script>
