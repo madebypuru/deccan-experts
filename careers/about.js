@@ -165,12 +165,12 @@
   if (mission) {
     const words = splitWords(mission);
     if (REDUCED || !window.ScrollTrigger) words.forEach(w => (w.style.opacity = 1));
-    else gsap.fromTo(words, { opacity: .2 }, { opacity: 1, ease: "none", stagger: .05,
-      scrollTrigger: { trigger: mission, start: "top 80%", end: "bottom 45%", scrub: .4 } });
+    else gsap.fromTo(words, { opacity: .2 }, { opacity: 1, ease: "none", duration: .14, stagger: .12,   // one word at a time, barely overlapping
+      scrollTrigger: { trigger: mission, start: "top 85%", end: "bottom 30%", scrub: .3 } });
     // the glow behind the words swells with them
     const glow = $(".mission__glow");
     if (glow && !REDUCED && window.ScrollTrigger) gsap.fromTo(glow, { opacity: .35, scale: .86 }, { opacity: .85, scale: 1, ease: "none",
-      scrollTrigger: { trigger: mission, start: "top 80%", end: "bottom 45%", scrub: .4 } });
+      scrollTrigger: { trigger: mission, start: "top 85%", end: "bottom 30%", scrub: .3 } });
   }
 
   /* ---------- research timeline ---------- */
@@ -377,21 +377,39 @@
   }
 
   /* ---------- team. Default: accordion — the next person opens into the card.
-     v3 (.lead--auto): auto-scrolling portrait rows. Each region drifts on its own (USA left, India right),
-     slows under the cursor, can be dragged or flicked, and loops seamlessly however many people it holds. ---------- */
+     .lead--auto: auto-scrolling portrait rows. Each region drifts on its own (USA left, India right), stops under
+     the cursor while the hovered card expands, can be dragged or flicked, and loops seamlessly at any team size. ---------- */
 
+  const IN_ICON = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.6 5.4H.9V15h2.7V5.4zM2.25 1A1.56 1.56 0 1 0 2.2 4.1 1.56 1.56 0 0 0 2.25 1zM15.1 9.5c0-2.6-1.4-4.3-3.6-4.3-1.3 0-2.2.7-2.6 1.4V5.4H6.3V15H9v-5c0-1.2.5-2.2 1.7-2.2s1.6 1 1.6 2.2v5h2.8V9.5z"/></svg>';
+
+  // Names, roles, backgrounds, photos and profiles are from deccan.ai/about-us.
   const TEAMS = {
     usa: [
-      { img: "img/about/lead-rukesh.webp", name: "Rukesh Reddy", role: "Founder", cred: "IIT Bombay, IIM Ahmedabad" },
-      ...[1, 2, 3, 4, 5, 6].map(n => ({ img: `img/about/usa-${n}.webp`, name: "Name Surname", role: "Role", cred: "Credentials" })),
+      {"img": "img/about/team/rukeshreddy.webp", "name": "Rukesh Reddy", "role": "Founder", "cred": "IIT Bombay, IIM Ahmedabad", "linkedin": "https://www.linkedin.com/in/rukeshreddy"},
+      {"img": "img/about/team/navaneeth.webp", "name": "Navaneeth Bodla", "role": "AI & Research", "cred": "Ex Adobe, Cruise, PhD from UMD, BITS Pilani", "linkedin": "https://www.linkedin.com/in/navaneeth-bodla-b1175833"},
+      {"img": "img/about/team/shivangi.webp", "name": "Shivangi Yadav", "role": "Evals", "cred": "Ex Meta, PhD from Michigan State, IIIT Delhi", "linkedin": "https://www.linkedin.com/in/shivangi-yadav-2656a15b"},
+      {"img": "img/about/team/akhedia.webp", "name": "Ankit Khedia", "role": "Multimodal", "cred": "Ex Meta, Google, IIT Kharagpur, Georgia Tech", "linkedin": "https://www.linkedin.com/in/akhedia"},
+      {"img": "img/about/team/samir.webp", "name": "Samir Janveja", "role": "GTM", "cred": "Ex Google, UCB Haas, Michigan Ross", "linkedin": "https://www.linkedin.com/in/samir-janveja"},
+      {"img": "img/about/team/kmrvishal.webp", "name": "Vishal Kumar", "role": "Solutions", "cred": "Ex Amazon, Scale AI, Arizona State", "linkedin": "https://www.linkedin.com/in/kmrvishal"},
+      {"img": "img/about/team/jsahni.webp", "name": "Jagdeep Sahni", "role": "New Accounts", "cred": "Ex Intuit, AWS, Northwestern University", "linkedin": "https://www.linkedin.com/in/jsahni"},
+      {"img": "img/about/team/narendar.webp", "name": "Narendar Sriram", "role": "Robotics", "cred": "Ex OSARO, CMU Robotics Institute", "linkedin": "https://www.linkedin.com/in/narendar-sriram"},
     ],
     india: [
-      { img: "img/about/lead-purva.webp", name: "Purva Bhandari", role: "Strategy", cred: "Ex Google, McKinsey" },
-      ...[1, 2, 3, 4, 5, 6].map(n => ({ img: `img/about/ind-${n}.webp`, name: "Name Surname", role: "Role", cred: "Credentials" })),
+      {"img": "img/about/team/purvabhandari.webp", "name": "Purva Bhandari", "role": "Strategy", "cred": "Ex Google, McKinsey, IIT Madras, IIM Ahd", "linkedin": "https://www.linkedin.com/in/purvabhandari"},
+      {"img": "img/about/team/sajomathews.webp", "name": "Sajo Mathews", "role": "Applied AI", "cred": "Ex-Founder CTO, Zapr (acquired by Samsung), IIT Kgp, IIM Ahd", "linkedin": "https://www.linkedin.com/in/sajomathews"},
+      {"img": "img/about/team/sarawagi.webp", "name": "Ankur Sarawagi", "role": "GTM", "cred": "Ex Cofounder Nearby, Bain, IIT Bombay", "linkedin": "https://www.linkedin.com/in/sarawagi"},
+      {"img": "img/about/team/gopipep.webp", "name": "Gopi Pepakayala", "role": "RevOps", "cred": "Ex-Founder OSVid, AWS, IIT Madras", "linkedin": "https://www.linkedin.com/in/gopipep"},
+      {"img": "img/about/team/syed.webp", "name": "Shakeel Imdad", "role": "Delivery", "cred": "Ex Scale AI, HighRadius, NIT Durgapur, ISB", "linkedin": "https://www.linkedin.com/in/syed-imdad"},
+      {"img": "img/about/team/jaiprasadr.webp", "name": "Jaiprasad Reddy", "role": "Coding & RL", "cred": "Ex MENSA Brands, NIT Surathkal", "linkedin": "https://www.linkedin.com/in/jaiprasadr"},
+      {"img": "img/about/team/krishnanand.webp", "name": "Krishna B", "role": "Scaled Operations", "cred": "Ex Amazon (Nova / Alexa Ops)", "linkedin": "https://www.linkedin.com/in/krishnanand-b-81a9581b"},
+      {"img": "img/about/team/arpitmaheshwari.webp", "name": "Arpit Maheshwari", "role": "Growth & Partnerships", "cred": "Ex Uber AI, Scale AI, IIT Kanpur, FMS Delhi", "linkedin": "https://www.linkedin.com/in/arpitmaheshwari"},
+      {"img": "img/about/team/ginika.webp", "name": "Ginika Gupta", "role": "People & Culture", "cred": "Ex Indigo, 15+ yrs. of exp., IIM Kozhikode", "linkedin": "https://www.linkedin.com/in/ginika-nishank-gupta"},
+      {"img": "img/about/team/pr.webp", "name": "Mahesh Reddy", "role": "Platforms", "cred": "Ex Hackerrank, 15+ yrs. of exp.", "linkedin": "https://www.linkedin.com/in/pr-mahesh"},
+      {"img": "img/about/team/sparsh.webp", "name": "Sparsh Ganjoo", "role": "Founders Office", "cred": "Ex- VC, 3one4 Capital", "linkedin": "https://www.linkedin.com/in/sparsh-ganjoo"},
     ],
   };
   const accordion = region => {
-    const people = TEAMS[region.dataset.region], box = $(".people", region);
+    const people = peopleFor(region), box = $(".people", region);
     box.innerHTML = people.map((m, i) => `
       <div class="person${i ? "" : " is-on"}" tabindex="0" role="button" aria-label="${m.name}">
         <div class="person__glow" aria-hidden="true"><img src="img/about/glow-small.webp" alt=""><img src="img/hero-team-bg-blur.webp" alt=""></div>
@@ -406,15 +424,19 @@
       c.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); ctl.go(i, true); } });
     });
   };
-  $$("[data-region]").forEach((region, ri) => {
-    if (!region.closest(".lead--auto")) return accordion(region);
-    const people = TEAMS[region.dataset.region], box = $(".crew", region), play = $(".play", region);
-    $(".count", region).textContent = `${people.length} people`;
-    const card = m => `
+  // a region can bring its own people as JSON (the Experts About page does); otherwise it's a deccan.ai team above
+  const peopleFor = region => {
+    const own = $('script[type="application/json"]', region);
+    return own ? JSON.parse(own.textContent) : TEAMS[region.dataset.region];
+  };
+  const initials = n => n.split(" ").slice(0, 2).map(w => w[0]).join("");
+  const card = m => `
       <div class="mate">
-        <div class="mate__card"><div><img src="${m.img}" alt="${m.name}" draggable="false"></div></div>
-        <div class="mate__who"><b>${m.name}</b><small>${m.role} <img src="img/about/rule-v.svg" alt=""> ${m.cred}</small></div>
+        <div class="mate__card"><div>${m.img ? `<img src="${m.img}" alt="${m.name}" draggable="false">` : `<span class="mate__ini" aria-hidden="true">${initials(m.name)}</span>`}</div>${m.linkedin ? `<a class="mate__in" href="${m.linkedin}" target="_blank" rel="noopener" draggable="false" aria-label="${m.name} on LinkedIn">${IN_ICON}</a>` : ""}</div>
+        <div class="mate__who"><b>${m.name}</b><small><span>${m.role}</span><span>${m.cred}</span></small></div>
       </div>`;
+  const marquee = (box, people, dir) => {
+    const panel = box.closest(".tm__panel");           // option 2: a country that's switched away stops moving
     const set = people.map(card).join("");
     box.innerHTML = `<div class="crew__track">${set}</div>`;
     const track = $(".crew__track", box);
@@ -430,32 +452,23 @@
     addEventListener("resize", () => { span = fill(); });
     if (REDUCED) { box.style.overflowX = "auto"; return; }
 
-    const dir = ri % 2 ? 1 : -1, BASE = 34;            // px per second
+    const BASE = 72;                                   // px per second
     let x = dir > 0 ? -span : 0, speed = BASE, paused = false, visible = false, drag = false, sx = 0, x0 = 0, lx = 0, lt = 0, flick = 0;
     const wrap = v => ((v % span) - span) % span;      // keep x within (-span, 0]
     const target = { s: BASE };
     gsap.ticker.add((t, dt) => {
-      if (!visible || drag) return;
+      if (!visible || drag || (panel && !panel.classList.contains("is-on"))) return;
       flick *= .94;
       speed += (target.s - speed) * .08;
       x = wrap(x + (dir * speed + flick) * dt / 1000);
       gsap.set(track, { x });
     });
     new IntersectionObserver(([e]) => visible = e.isIntersecting, { rootMargin: "100px" }).observe(box);
-    const ease = () => target.s = paused ? 0 : box.matches(":hover") ? BASE * .2 : BASE;
+    const ease = () => target.s = paused ? 0 : box.matches(":hover") ? 0 : BASE;
     box.addEventListener("pointerenter", ease);
     box.addEventListener("pointerleave", ease);
-    const ICON = { pause: '<svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1h2v8H2zM6 1h2v8H6z" fill="#f6f3f4"/></svg>', play: '<svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z" fill="#f6f3f4"/></svg>' };
-    play.innerHTML = ICON.pause;
-    play.addEventListener("click", () => {
-      paused = !paused;
-      play.innerHTML = paused ? ICON.play : ICON.pause;
-      play.setAttribute("aria-pressed", paused);
-      play.setAttribute("aria-label", paused ? "Play rotation" : "Pause rotation");
-      ease();
-    });
     box.addEventListener("pointerdown", e => {
-      if (e.button) return;
+      if (e.button || e.target.closest("a")) return;   // let the LinkedIn link take its own click
       drag = true; sx = lx = e.clientX; x0 = x; lt = performance.now(); flick = 0;
       box.setPointerCapture(e.pointerId); box.classList.add("is-drag");
     });
@@ -468,7 +481,82 @@
     const up = () => { if (!drag) return; drag = false; box.classList.remove("is-drag"); flick = gsap.utils.clamp(-2400, 2400, flick); };
     box.addEventListener("pointerup", up);
     box.addEventListener("pointercancel", up);
+    return { pause: v => { paused = v; ease(); } };
+  };
+  const pauseButton = (play, rows) => {
+    const ICON = { pause: '<svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1h2v8H2zM6 1h2v8H6z" fill="#f6f3f4"/></svg>', play: '<svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z" fill="#f6f3f4"/></svg>' };
+    let paused = false;
+    play.innerHTML = ICON.pause;
+    play.addEventListener("click", () => {
+      paused = !paused;
+      play.innerHTML = paused ? ICON.play : ICON.pause;
+      play.setAttribute("aria-pressed", paused);
+      play.setAttribute("aria-label", paused ? "Play rotation" : "Pause rotation");
+      rows.forEach(r => r.pause(paused));
+    });
+  };
+  $$("[data-region]").forEach((region, ri) => {
+    if (!region.closest(".lead--auto")) return accordion(region);
+    const people = peopleFor(region);
+    $(".count", region).textContent = `${people.length} people`;
+    const row = marquee($(".crew", region), people, ri % 2 ? 1 : -1);
+    if (row) pauseButton($(".play", region), [row]);
   });
+
+  /* Option 2 · text on the left, country switch on the right, and the chosen country's people in two
+     rows that slide by themselves in opposite directions. Panels share one grid cell, so the section
+     keeps its height and every photo is already loaded when you switch. */
+  const tm = $(".tm");
+  if (tm) {
+    const tabs = $$(".tm__tab", tm), thumb = $(".tm__thumb", tm), panels = $$(".tm__panel", tm), rows = [];
+    panels.forEach(p => {
+      const people = TEAMS[p.dataset.team], half = Math.ceil(people.length / 2);
+      [people.slice(0, half), people.slice(half)].forEach((group, i) => {
+        const box = document.createElement("div");
+        box.className = "crew";
+        p.append(box);
+        const row = marquee(box, group, i ? 1 : -1);
+        if (row) rows.push(row);
+      });
+    });
+    if (rows.length) pauseButton($(".play", tm), rows);
+    else $(".play", tm).hidden = true;
+    tabs.forEach(t => { $("small", t).textContent = TEAMS[t.dataset.team].length; });
+    const place = () => {
+      const t = tabs.find(b => b.getAttribute("aria-selected") === "true");
+      thumb.style.width = t.offsetWidth + "px";
+      thumb.style.transform = `translateX(${t.offsetLeft}px)`;
+    };
+    const show = next => {
+      if (next.getAttribute("aria-selected") === "true") return;
+      tabs.forEach(t => { const on = t === next; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; });
+      place();
+      panels.forEach(p => {
+        const on = p.dataset.team === next.dataset.team, crews = $$(".crew", p);
+        gsap.killTweensOf(crews);
+        if (on) {
+          p.classList.add("is-on");
+          if (REDUCED) return gsap.set(crews, { clearProps: "opacity,filter,transform" });
+          gsap.fromTo(crews, { opacity: 0, y: 16, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: .7, ease: "expo.out", stagger: .08, delay: .1, clearProps: "opacity,filter,transform" });
+        } else if (p.classList.contains("is-on")) {
+          if (REDUCED) return p.classList.remove("is-on");
+          gsap.to(crews, { opacity: 0, y: -8, filter: "blur(6px)", duration: .2, ease: "power2.in", onComplete: () => { if ($(`[aria-selected="true"]`, tm).dataset.team === p.dataset.team) return; p.classList.remove("is-on"); gsap.set(crews, { clearProps: "opacity,filter,transform" }); } });
+        }
+      });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", () => show(t));
+      t.addEventListener("keydown", e => {
+        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        e.preventDefault();
+        const n = tabs[(i + tabs.length + (e.key === "ArrowRight" ? 1 : -1)) % tabs.length];
+        n.focus(); show(n);
+      });
+    });
+    place();
+    addEventListener("resize", place);
+    document.fonts?.ready.then(place);
+  }
 
   /* ---------- office collage (same behaviour as Careers) ---------- */
 
